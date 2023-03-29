@@ -12,7 +12,11 @@
 
 [SQL DDL File](ex_4_1_2.sql "SQLFileQuestion")
 
+<<<<<<< HEAD
 ![ex_4_1_2 diagram](ex_4_1_2.pdf "AnImage")
+=======
+![ex_4_1_2 diagram](ex_4_1_2.png "AnImage")
+>>>>>>> 3524d01b0db24d516ac7e7b6b748cf169aafc942
 
 ### 3. Sistema de Gestão de Stocks – Módulo de Encomendas
 
@@ -24,16 +28,28 @@
 
 [SQL DDL File](ex_4_1_4.sql "SQLFileQuestion")
 
+<<<<<<< HEAD
 ![ex_4_1_4 diagram](ex_4_1_4.pdf "AnImage")
+=======
+![ex_4_1_4 diagram](ex_4_1_4.png "AnImage")
+>>>>>>> 3524d01b0db24d516ac7e7b6b748cf169aafc942
 
 ### 5. Sistema de Gestão de Conferências
 
 [SQL DDL File](ex_4_1_5.sql "SQLFileQuestion")
 
+<<<<<<< HEAD
 ![ex_4_1_5 diagram](ex_4_1_5.pdf "AnImage")
+=======
+![ex_4_1_5 diagram](ex_4_1_5.png "AnImage")
+>>>>>>> 3524d01b0db24d516ac7e7b6b748cf169aafc942
 
 ### 6. Sistema de Gestão de ATL
 
 [SQL DDL File](ex_4_1_6.sql "SQLFileQuestion")
 
+<<<<<<< HEAD
 ![ex_4_1_6 diagram](ex_4_1_6.pdf "AnImage")
+=======
+![ex_4_1_6 diagram](ex_4_1_6.png "AnImage")
+>>>>>>> 3524d01b0db24d516ac7e7b6b748cf169aafc942
