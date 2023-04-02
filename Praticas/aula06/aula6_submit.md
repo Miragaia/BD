@@ -268,27 +268,39 @@ WHERE        (dbo.stores.stor_name <> 'Bookbeat')
 ##### *a)*
 
 ```
-... Write here your answer ...
+SELECT stock.fornecedor.nome, stock.encomenda.numero, stock.fornecedor.nif, stock.fornecedor.endereco, stock.fornecedor.fax, stock.fornecedor.condpag, stock.fornecedor.tipo
+FROM     stock.fornecedor INNER JOIN
+                  stock.encomenda ON stock.fornecedor.nif = stock.encomenda.fornecedor
+WHERE  (stock.encomenda.numero IS NULL)
 ```
 
 ##### *b)* 
 
 ```
-... Write here your answer ...
+SELECT codProd, AVG(unidades) AS AvgUnidades
+FROM     stock.item
+GROUP BY codProd
 ```
 
 
 ##### *c)* 
 
 ```
-... Write here your answer ...
+SELECT numEnc, AVG(unidades) AS AvgUnidades
+FROM     stock.item
+GROUP BY numEnc
 ```
 
 
 ##### *d)* 
 
 ```
-... Write here your answer ...
+SELECT stock.fornecedor.nome, stock.produto.nome AS nomeProduto, SUM(stock.item.unidades) AS Quantidade
+FROM     stock.item INNER JOIN
+                  stock.produto ON stock.item.codProd = stock.produto.codigo INNER JOIN
+                  stock.encomenda ON stock.item.numEnc = stock.encomenda.numero INNER JOIN
+                  stock.fornecedor ON stock.encomenda.fornecedor = stock.fornecedor.nif
+GROUP BY stock.fornecedor.nome, stock.produto.nome
 ```
 
 ### 5.3
