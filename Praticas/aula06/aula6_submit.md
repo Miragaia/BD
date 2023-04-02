@@ -202,55 +202,74 @@ WHERE        (dbo.stores.stor_name <> 'Bookbeat')
 ##### *a)*
 
 ```
-... Write here your answer ...
+select Ssn, Fname, Minit, Lname, Pno
+from (Company.Employee join Company.Works_on on Ssn=Essn);
 ```
 
 ##### *b)* 
 
 ```
-... Write here your answer ...
+select E.Fname, E.Minit, E.Lname
+from (Company.Employee as E join Company.Employee as S on E.Super_ssn=S.Ssn)
+where S.Fname='Carlos' and S.Minit='D' and S.Lname='Gomes';
 ```
 
 ##### *c)* 
 
 ```
-... Write here your answer ...
+select Pname, sum([Hours]) as Total_hours
+from (Company.Project join Company.Works_on on Pnumber=Pno)
+group by Pname;
 ```
 
 ##### *d)* 
 
 ```
-... Write here your answer ...
+select Fname,Minit,Lname
+from ((Company.Project join Company.Works_on on Pnumber=Pno) join Company.Employee on Ssn=Essn)
+where Hours>20 and Dno=3;
 ```
 
 ##### *e)* 
 
 ```
-... Write here your answer ...
+select Fname,Minit,Lname
+from (Company.Employee left outer join Company.Works_on on Ssn=Essn)
+where Essn is null
 ```
 
 ##### *f)* 
 
 ```
-... Write here your answer ...
+select Dname, avg(Salary) as Avg_salary
+from (Company.Department join Company.Employee on Dno=Dnumber)
+where Sex='F'
+group by Dname;
 ```
 
 ##### *g)* 
 
 ```
-... Write here your answer ...
+select Fname, Minit, Lname, count(Dependent_name) as DependentsNumber
+from (Company.Employee join [Company.Dependent] on Ssn=Essn)
+group by  Fname, Minit, Lname
+having count(Dependent_name) > 2;
 ```
 
 ##### *h)* 
 
 ```
-... Write here your answer ...
+select Fname, Minit, Lname
+from ((Company.Employee join Company.Department on Ssn=Mgr_ssn) left outer join [Company.Dependent] on Ssn=Essn)
+where Essn is null
 ```
 
 ##### *i)* 
 
 ```
-... Write here your answer ...
+select distinct Fname, Minit,Lname,[Address]
+from (((Company.Works_on join Company.Employee on Ssn=Essn) join Company.Project on Pno=Pnumber) join Company.Dept_locations on Dno=Dnumber)
+where Plocation='Aveiro' and Dlocation!='Aveiro'
 ```
 
 ### 5.2
@@ -318,37 +337,58 @@ GROUP BY stock.fornecedor.nome, stock.produto.nome
 ##### *a)*
 
 ```
-... Write here your answer ...
+SELECT Prescrições.Paciente.numUtente,Prescrições.Paciente.Nome,DataNasc,Endereço
+FROM (Prescrições.Paciente LEFT OUTER JOIN Prescrições.prescrição ON Prescrições.Paciente.numUtente=Prescrições.prescrição.numUtente) 
+WHERE NumPresc IS NULL;
 ```
 
 ##### *b)* 
 
 ```
-... Write here your answer ...
+SELECT Especialidade,count(Especialidade) as NumeroPrescricoes
+FROM (Prescrições.Medico JOIN Prescrições.Prescrição ON numSNS != NumMedico)
+GROUP BY Especialidade
 ```
 
 
 ##### *c)* 
 
 ```
-... Write here your answer ...
+SELECT Prescrições.Farmacia.Nome,count(Prescrições.Farmacia.Nome) as NumeroPrescricoes
+FROM (Prescrições.Farmacia JOIN Prescrições.prescrição ON Prescrições.Farmacia.Nome=Prescrições.prescrição.farmacia)
+GROUP BY Prescrições.Farmacia.Nome;
 ```
 
 
 ##### *d)* 
 
 ```
-... Write here your answer ...
+SELECT Nome,Formula,.Prescrições.Farmaco.NumRegFarm
+FROM (Prescrições.Farmaco LEFT OUTER JOIN Prescrições.presc_farmaco ON Nome = NomeFarmaco)
+Where Prescrições.Farmaco.NumRegFarm = 906 AND NumPresc IS NULL;
 ```
 
 ##### *e)* 
 
 ```
-... Write here your answer ...
+SELECT Prescrições.Farmacia.Nome, Prescrições.Farmaceutica.Nome,count(Prescrições.Farmaco.Nome) as NumFarmacos
+FROM (Prescrições.Farmaceutica JOIN 
+								(Prescrições.Farmaco JOIN
+														(Prescrições.presc_farmaco JOIN 
+																					(Prescrições.Farmacia JOIN Prescrições.prescrição ON Prescrições.Farmacia.Nome = Prescrições.prescrição.farmacia)
+														ON Prescrições.presc_farmaco.NumPresc = Prescrições.prescrição.NumPresc)
+								ON Prescrições.Farmaco.Nome = Prescrições.presc_farmaco.NomeFarmaco)	
+		ON NumReg = Prescrições.Farmaco.NumRegFarm)
+GROUP BY  Prescrições.Farmacia.Nome, Prescrições.Farmaceutica.Nome
 ```
 
 ##### *f)* 
 
 ```
-... Write here your answer ...
+SELECT Prescrições.Paciente.Nome,Prescrições.Paciente.NumUtente,count(Prescrições.Medico.NumSNS) AS NumMedicos
+FROM Prescrições.Medico JOIN
+		(Prescrições.Paciente JOIN Prescrições.prescrição ON Paciente.NumUtente = prescrição.numUtente)
+ON Prescrições.Medico.numSNS = Prescrições.prescrição.numMedico
+GROUP BY Prescrições.Paciente.Nome,Prescrições.Paciente.NumUtente
+HAVING count(Prescrições.Medico.numSNS) > 1
 ```
