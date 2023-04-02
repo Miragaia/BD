@@ -8,17 +8,17 @@ GO
 CREATE TABLE stock.produto(
 	codigo		INT				NOT NULL,
 	nome		VARCHAR(30)		NOT NULL,
-	iva		DECIMAL(3,2)	NOT NULL,
+	iva			DECIMAL(3,2)	NOT NULL,
 	preco		Money			NOT NULL,
-	unidades		INT				NOT NULL
+	unidades	INT				NOT NULL
 
 	PRIMARY KEY(codigo)
 );
 GO
 
 CREATE TABLE stock.tipo_fornecedor(
-	codigo		INT		NOT NULL,
-	designacao		VarChar(20),
+	codigo			INT			NOT NULL,
+	designacao		VarChar(20)	NOT NULL,
 
 	PRIMARY KEY(codigo)
 );
@@ -28,7 +28,7 @@ CREATE TABLE stock.fornecedor(
 	nif					INT			NOT NULL,
 	nome				VarChar(30)	NOT NULL,
 	endereco			VarChar(40) NOT NULL,
-	fax					INT,
+	fax					INT			NOT NULL,
 	condpag				INT			NOT NULL,
 	tipo				INT			NOT NULL references stock.tipo_fornecedor (codigo),
 
