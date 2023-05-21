@@ -1,1 +1,16 @@
 mudar o "tem" pelo que o stor escreveu q nos n entendemos
+
+Saber se no DML no Higiliquidos.Encomenda é suposto fazer assim, ou seja, meter varios com o mesmo id e depois tambem meter sempre o total em todos
+
+verificar se nas encomendas existe o nº de produtos pedidos
+
+saber pq os distribuidores/vendedores têm um atributo permissão(saber para que serve pq não haveriam de ter permissao?)
+
+meti 7 vendedores e 7 distribuidores, nas carrinhas temos 8 para 7 vendedores. Meto mais/menos carrinhas?
+
+nas encomenda vou ter de ter 4 coisas: distribuidor/Vendedor/cliente/Fornecedor
+
+do vendedor=cliente(data,idProdutos...)
+VER OS DIAGRAMAS E O DDL QUE DEVE ESTAR BEM
+
+NÃO FALTA RELAÇÃO ENTRE CLIENTE E DESTRIBUIDOR/VENDEDOR?

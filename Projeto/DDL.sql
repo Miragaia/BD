@@ -58,13 +58,13 @@ CREATE TABLE Higiliquidos.Carrinha (
 );
 
 
-CREATE TABLE Higiliquidos.Pessoa (
+CREATE TABLE Higiliquidos.Pessoa (  
+  NIF INT NOT NULL,
   nome varchar(64) NOT NULL,
+  Data_de_Nascimento DATE NOT NULL,
   email varchar(64) NOT NULL,
   morada varchar(64) NOT NULL,
   ContactoTelefonico INT NOT NULL,
-  NIF INT NOT NULL,
-  Data_de_Nascimento DATE NOT NULL,
   
   PRIMARY KEY (NIF)
 );  
@@ -77,7 +77,7 @@ CREATE TABLE Higiliquidos.Empresa (
   ContactoTelefonico INT NOT NULL,
   ID_Armazem INT NOT NULL,
   NIF_Pessoa INT NOT NULL,
-  matricula_Carrinha varchar(64) NOT NULL,
+  matricula_Carrinha varchar(64),
 
   PRIMARY KEY (nome),
   FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
@@ -139,7 +139,7 @@ CREATE TABLE Higiliquidos.Encomenda_Cliente (
 
 
 CREATE TABLE Higiliquidos.Funcionario (
-  IBAN INT NOT NULL,
+  IBAN VARCHAR(32) NOT NULL,
   Numero_SS INT NOT NULL,
   Data_Inicio_Atividade DATE NOT NULL,
   NIF_Funcionario INT NOT NULL,
@@ -171,9 +171,9 @@ CREATE TABLE Higiliquidos.Distribuidor (
 CREATE TABLE Higiliquidos.Encomenda_Distribuidor (
   NIF_Distribuidor INT NOT NULL,
   ID_Encomenda INT NOT NULL,
-  Data_Enc DATE NOT NULL,
+  Data_Entrega DATE NOT NULL,
 
-  PRIMARY KEY (Data_Enc,  ID_Encomenda),
+  PRIMARY KEY (Data_Entrega,  ID_Encomenda),
   FOREIGN KEY (NIF_Distribuidor) REFERENCES Higiliquidos.Distribuidor(NIF_Distribuidor),
   FOREIGN KEY (ID_Encomenda) REFERENCES Higiliquidos.Encomenda(ID)
 
