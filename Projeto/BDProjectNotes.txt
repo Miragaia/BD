@@ -2,7 +2,6 @@ mudar o "tem" pelo que o stor escreveu q nos n entendemos
 
 Saber se no DML no Higiliquidos.Encomenda é suposto fazer assim, ou seja, meter varios com o mesmo id e depois tambem meter sempre o total em todos
 
-verificar se nas encomendas existe o nº de produtos pedidos
 
 saber pq os distribuidores/vendedores têm um atributo permissão(saber para que serve pq não haveriam de ter permissao?)
 
