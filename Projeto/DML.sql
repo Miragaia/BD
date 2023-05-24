@@ -417,7 +417,7 @@ INSERT INTO Higiliquidos.Funcionario (NIF_Funcionario, IBAN, Data_Inicio_Ativida
 (255666777, "PT50001686771234567890168", "14/02/2022", 200000801, 3);
 
 
-INSERT INTO Higiliquidos.Vendedor (NIF_Vendedor, Num_Func) VALUES
+INSERT INTO Higiliquidos.Gerente (NIF_Gerente, Num_Func) VALUES
 (255666777, 3);
 
 
