@@ -35,12 +35,12 @@ AS
 	End
 GO
 
-CREATE PROCEDURE Higiliquidos.AdicionarFuncionario (@Nome VARCHAR(256), @Morada VARCHAR(256), @NIF INT, @Data_Nasc DATE, @Genero VARCHAR(1), @Telemovel VARCHAR(9), @IBAN VARCHAR(25), @Numero_SS INT, @Data_Inicio_Atividade DATE)
+CREATE PROCEDURE Higiliquidos.AdicionarFuncionario (@NIF_Funcionario INT, @Nome VARCHAR(256), @Data_de_Nascimento DATE, @Email varchar(64), @Morada VARCHAR(256), @ContactoTelefonico VARCHAR(9), @IBAN VARCHAR(25), @Data_Inicio_Atividade DATE, @Numero_SS INT, @Num_Func INT)
 AS
 	BEGIN
 		BEGIN TRAN
-		    INSERT INTO Higiliquidos.Pessoa(NIF, Nome, Data_de_Nascimento, Email, morada, ContactoTelefonico) VALUES (@NIF, @Nome, @Data_de_Nascimento, @Email, @Morada, @ContactoTelefonico);
-			INSERT INTO WineDB.Funcionario(NIF , IBAN, NUM_SS, Data_Inicio_Atividade) VALUES (@NIF, @IBAN, @Num_SS, @Data_Inicio_Atividade)
+		    INSERT INTO Higiliquidos.Pessoa(NIF, Nome, Data_de_Nascimento, Email, morada, ContactoTelefonico) VALUES (@NIF_Funcionario, @Nome, @Data_de_Nascimento, @Email, @Morada, @ContactoTelefonico);
+			INSERT INTO Higiliquidos.Funcionario(NIF_Funcionario, IBAN, Data_Inicio_Atividade, Numero_SS, Num_Func) VALUES (@NIF_Funcionario, @IBAN, @Data_Inicio_Atividade, @Numero_SS, @Num_Func)
 		COMMIT TRAN
 	End
 GO
