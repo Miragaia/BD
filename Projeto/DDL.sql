@@ -97,10 +97,8 @@ CREATE TABLE Higiliquidos.Fornecedor (
 
 CREATE TABLE Higiliquidos.Encomenda (
   ID INT NOT NULL,
-  Data_Entrega VARCHAR(255),
   ID_Produto INT NOT NULL,
   Quantidade_Produto INT NOT NULL,
-  Quantidade_Total INT NOT NULL,
 
   PRIMARY KEY (ID),
   FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID),
