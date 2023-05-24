@@ -1,4 +1,4 @@
-INSERT INTO Higiliquidos.Produto (ID, nome, marca, Tipo_de_Produto, IVA, Preco, quantidade) VALUES
+INSERT INTO Higiliquidos.Produto (ID, Nome, Marca, Tipo_de_Produto, IVA, Preco, Quantidade) VALUES
 (0, "Amaciador", "Pantene", "Cabelo", 23, 5.99, 100),
 (1, "Detergente para Louça", "Fairy", "Limpeza", 23, 2.99, 200),
 (2, "Limpador Multiuso", "Veja", "Limpeza", 23, 4.49, 150),
@@ -21,7 +21,7 @@ INSERT INTO Higiliquidos.Produto (ID, nome, marca, Tipo_de_Produto, IVA, Preco, 
 (19, "Pano de Limpeza Descartável", "Dexter", "Acessório", 23, 3.49, 250);
 
 
-INSERT INTO Higiliquidos.Armazem(ID, tamanho, endereco, ID_Produto) VALUES
+INSERT INTO Higiliquidos.Armazem(ID, Tamanho, Endereco, ID_Produto) VALUES
 (0,2100,"Rua 31 Janeiro, Arrifana", 0),
 (0,2100,"Rua 31 Janeiro, Arrifana", 1),
 (0,2100,"Rua 31 Janeiro, Arrifana", 2),
@@ -44,7 +44,7 @@ INSERT INTO Higiliquidos.Armazem(ID, tamanho, endereco, ID_Produto) VALUES
 (4,400,"Rua Barroco da Cela 8, Arrifana", 19);
 
 
-INSERT INTO Higiliquidos.Carrinha (matricula,ano,marca,combustivel,peso) VALUES
+INSERT INTO Higiliquidos.Carrinha (Matricula, Ano, Marca, Combustivel, Peso) VALUES
 ("AA-09-BD",2018,"Renault","Diesel",1160),
 ("CD-89-AK", 2014, "Mercedes","Gasolina",5000),
 ("EF-34-RT", 2019, "Fiat","Gasolina",1500),
@@ -55,7 +55,7 @@ INSERT INTO Higiliquidos.Carrinha (matricula,ano,marca,combustivel,peso) VALUES
 ("QR-67-WX", 2016, "Citroen","Diesel",1900);
 
 
-INSERT INTO Higiliquidos.Pessoa (NIF, nome, Data_de_Nascimento, email, morada, ContactoTelefonico) VALUES
+INSERT INTO Higiliquidos.Pessoa (NIF, Nome, Data_de_Nascimento, Email, Morada, ContactoTelefonico) VALUES
 --Funcionarios
 (294455765, "João Antonio", "05/10/1983", 'joaoant@gmail.com', "Rua Vou AliJaVenho", 931764532),
 (287649264, "Maria Silva", "12/03/1990", 'maria.silva@gmail.com', "Avenida Principal", 987854321),
@@ -121,7 +121,7 @@ INSERT INTO Higiliquidos.Pessoa (NIF, nome, Data_de_Nascimento, email, morada, C
 (211900111, "Carlos Rodrigues", "28/10/1998", 'carlos.rodriguesss@gmail.com', "Avenida Principal, 654", 955090111);
 
 
-INSERT INTO Higiliquidos.Empresa (nome, email, endereco, ContactoTelefonico, ID_Armazem, NIF_Pessoa, matricula_Carrinha) VALUES
+INSERT INTO Higiliquidos.Empresa (Nome, Email, Endereco, ContactoTelefonico, ID_Armazem, NIF_Pessoa, Matricula_Carrinha) VALUES
 ("Higilíquidos","higiliquidos@sapo.pt","Rua Barroco da Cela 8, Arrifana",271963349, 0, NULL, NULL),
 ("Higilíquidos","higiliquidos@sapo.pt","Rua Barroco da Cela 8, Arrifana",271963349, 1, NULL, NULL),
 ("Higilíquidos","higiliquidos@sapo.pt","Rua Barroco da Cela 8, Arrifana",271963349, 2, NULL, NULL),
@@ -358,7 +358,7 @@ INSERT INTO Higiliquidos.Cliente (NIF_Cliente) VALUES
 
 
 
-INSERT INTO Higiliquidos.Encomenda_Cliente (NIF_Cliente, ID_Encomenda, Data_pedido) VALUES
+INSERT INTO Higiliquidos.Encomenda_Cliente (NIF_Cliente, ID_Encomenda) VALUES
 (277111000,18),
 (288333444,19), 
 (255000111,20), 
@@ -396,45 +396,49 @@ INSERT INTO Higiliquidos.Encomenda_Cliente (NIF_Cliente, ID_Encomenda, Data_pedi
 (288666707,52);
 
 
-INSERT INTO Higiliquidos.Funcionario (NIF_Funcionario, IBAN, Data_Inicio_Atividade, Numero_SS) VALUES
+INSERT INTO Higiliquidos.Funcionario (NIF_Funcionario, IBAN, Data_Inicio_Atividade, Numero_SS, Num_Func) VALUES
 --Vendedor
-(294455765, "PT50000201231234567890154", "15/06/2018", 200000000),
-(287649264, "PT50000392221234567890155", "15/06/2018", 200000001),
-(287654321, "PT50000423451234567890156", "15/06/2018", 200000101),
-(295748365, "PT50000584321234567890157", "15/06/2018", 200000003),
-(211111111, "PT50000698741234567890158", "15/06/2018", 200000004),
-(222222222, "PT50000765431234567890159", "04/06/2019", 200000005),
-(299999999, "PT50000812971234567890160", "04/06/2019", 200000006),
+(294455765, "PT50000201231234567890154", "15/06/2018", 200000000, 1),
+(287649264, "PT50000392221234567890155", "15/06/2018", 200000001, 1),
+(287654321, "PT50000423451234567890156", "15/06/2018", 200000101, 1),
+(295748365, "PT50000584321234567890157", "15/06/2018", 200000003, 1),
+(211111111, "PT50000698741234567890158", "15/06/2018", 200000004, 1),
+(222222222, "PT50000765431234567890159", "04/06/2019", 200000005, 1),
+(299999999, "PT50000812971234567890160", "04/06/2019", 200000006, 1),
 --Distribuidor
-(288888888, "PT50000900981234567890161", "04/06/2019", 200000007),
-(277777777, "PT50001049761234567890162", "04/06/2019", 200000008),
-(266666666, "PT50001132821234567890163", "10/09/2020", 200000009),
-(244444444, "PT50001278311234567890164", "09/12/2020", 200000405),
-(233333333, "PT50001364521234567890165", "18/07/2021", 200000401),
-(222222333, "PT50001423091234567890166", "30/03/2022", 200000601),
-(223456789, "PT50001554141234567890167", "08/06/2022", 200000701),
+(288888888, "PT50000900981234567890161", "04/06/2019", 200000007, 2),
+(277777777, "PT50001049761234567890162", "04/06/2019", 200000008, 2),
+(266666666, "PT50001132821234567890163", "10/09/2020", 200000009, 2),
+(244444444, "PT50001278311234567890164", "09/12/2020", 200000405, 2),
+(233333333, "PT50001364521234567890165", "18/07/2021", 200000401, 2),
+(222222333, "PT50001423091234567890166", "30/03/2022", 200000601, 2),
+(223456789, "PT50001554141234567890167", "08/06/2022", 200000701, 2),
 --Gerente
-(255666777, "PT50001686771234567890168", "14/02/2022", 200000801);
+(255666777, "PT50001686771234567890168", "14/02/2022", 200000801, 3);
 
 
-INSERT INTO Higiliquidos.Vendedor (NIF_Vendedor) VALUES
-(294455765),
-(287649264),
-(287654321),
-(295748365),
-(211111111),
-(222222222),
-(299999999);
+INSERT INTO Higiliquidos.Vendedor (NIF_Vendedor, Num_Func) VALUES
+(255666777, 3);
 
 
-INSERT INTO Higiliquidos.Distribuidor (NIF_Distribuidor, Matricula_Carrinha) VALUES
-(288888888, "AA-09-BD"),
-(277777777, "CD-89-AK"),
-(266666666, "EF-34-RT"),
-(244444444, "GH-56-LM"),
-(233333333, "IJ-78-NP"),
-(222222333, "KL-90-QR"),
-(223456789, "OP-45-UV");
+INSERT INTO Higiliquidos.Vendedor (NIF_Vendedor, Num_Func) VALUES
+(294455765, 1),
+(287649264, 1),
+(287654321, 1),
+(295748365, 1),
+(211111111, 1),
+(222222222, 1),
+(299999999, 1);
+
+
+INSERT INTO Higiliquidos.Distribuidor (NIF_Distribuidor, Matricula_Carrinha, Nun_Func) VALUES
+(288888888, "AA-09-BD", 2),
+(277777777, "CD-89-AK", 2),
+(266666666, "EF-34-RT", 2),
+(244444444, "GH-56-LM", 2),
+(233333333, "IJ-78-NP", 2),
+(222222333, "KL-90-QR", 2),
+(223456789, "OP-45-UV", 2);
 --fica a faltar uma carrinha(reserva caso se estrague alguma)
 
 INSERT INTO Higiliquidos.Encomenda_Distribuidor (NIF_Distribuidor, ID_Encomenda, Data_Entrega) VALUES
