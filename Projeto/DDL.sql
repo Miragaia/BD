@@ -39,10 +39,10 @@ CREATE TABLE Higiliquidos.Armazem (
   ID INT NOT NULL,
   Tamanho INT NOT NULL,
   Endereco varchar(64) NOT NULL,
-  ID_Produto INT NOT NULL,
+  ID_Compra INT NOT NULL,
   
   PRIMARY KEY (ID),
-  FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID)
+  FOREIGN KEY (ID_Compra) REFERENCES Higiliquidos.Compra(ID)
   
 );
 
@@ -88,12 +88,26 @@ CREATE TABLE Higiliquidos.Empresa (
 
 CREATE TABLE Higiliquidos.Fornecedor (
   NIF_Fornecedor INT NOT NULL,
+  Num_Fornecedor INT NOT NULL,
 
   PRIMARY KEY (NIF_Fornecedor),
   FOREIGN KEY (NIF_Fornecedor) REFERENCES Higiliquidos.Pessoa(NIF)
 
 );
 
+CREATE TABLE Higiliquidos.Compra (
+  ID INT NOT NULL,
+  Data Date,
+  Quantidade INT NOT NULL,
+  ID_Produto INT NOT NULL,
+  ID_Armazem INT NOT NULL,
+  NIF_Fornecedor INT NOT NULL,
+
+  PRIMARY KEY (ID),
+  FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID),
+  FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
+  FOREIGN KEY (NIF_Fornecedor) REFERENCES Higiliquidos.Fornecedor(NIF_Fornecedor)
+);
 
 CREATE TABLE Higiliquidos.Encomenda (
   ID INT NOT NULL,
@@ -119,6 +133,7 @@ CREATE TABLE Higiliquidos.Encomenda_Fornecedor (
 
 CREATE TABLE Higiliquidos.Cliente (
   NIF_Cliente INT NOT NULL,
+  Num_Cliente INT NOT NULL,
 
   PRIMARY KEY (NIF_Cliente),
   FOREIGN KEY (NIF_Cliente) REFERENCES Higiliquidos.Pessoa(NIF)

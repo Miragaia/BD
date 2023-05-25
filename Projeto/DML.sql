@@ -21,27 +21,12 @@ INSERT INTO Higiliquidos.Produto (ID, Nome, Marca, Tipo_de_Produto, IVA, Preco, 
 (19, "Pano de Limpeza Descartável", "Dexter", "Acessório", 23, 3.49, 250);
 
 
-INSERT INTO Higiliquidos.Armazem(ID, Tamanho, Endereco, ID_Produto) VALUES
-(0,2100,"Rua 31 Janeiro, Arrifana", 0),
-(0,2100,"Rua 31 Janeiro, Arrifana", 1),
-(0,2100,"Rua 31 Janeiro, Arrifana", 2),
-(0,2100,"Rua 31 Janeiro, Arrifana", 3),
-(1,2100,"Rua 31 Janeiro, Arrifana", 4),
-(1,1500,"Rua 31 Janeiro, Arrifana", 5),
-(1,1500,"Rua 31 Janeiro, Arrifana", 6),
-(1,1500,"Rua 31 Janeiro, Arrifana", 7),
-(2,300,"Rua 31 Janeiro, Arrifana", 8),
-(2,300,"Rua 31 Janeiro, Arrifana", 9),
-(2,300,"Rua 31 Janeiro, Arrifana", 10),
-(2,300,"Rua 31 Janeiro, Arrifana", 11),
-(3,150,"Rua Barroco da Cela 8, Arrifana", 12),
-(3,150,"Rua Barroco da Cela 8, Arrifana", 13),
-(3,150,"Rua Barroco da Cela 8, Arrifana", 14),
-(3,150,"Rua Barroco da Cela 8, Arrifana", 15),
-(4,400,"Rua Barroco da Cela 8, Arrifana", 16),
-(4,400,"Rua Barroco da Cela 8, Arrifana", 17),
-(4,400,"Rua Barroco da Cela 8, Arrifana", 18),
-(4,400,"Rua Barroco da Cela 8, Arrifana", 19);
+INSERT INTO Higiliquidos.Armazem(ID, Tamanho, Endereco) VALUES
+(0,2100,"Rua 31 Janeiro, Arrifana"),
+(1,2100,"Rua 31 Janeiro, Arrifana"),
+(2,300,"Rua 31 Janeiro, Arrifana"),
+(3,300,"Rua Barroco da Cela 8, Arrifana"),
+(4,300,"Rua Barroco da Cela 8, Arrifana");
 
 
 INSERT INTO Higiliquidos.Carrinha (Matricula, Ano, Marca, Combustivel, Peso) VALUES
@@ -200,22 +185,22 @@ INSERT INTO Higiliquidos.Empresa (Nome, Email, Endereco, ContactoTelefonico, ID_
 ("Higilíquidos","higiliquidos@sapo.pt","Rua Barroco da Cela 8, Arrifana",271963349, NULL, NULL, "QR-67-WX");
 
 
-INSERT INTO Higiliquidos.Fornecedor (NIF_Fornecedor) VALUES
-(277888999), 
-(299888777), 
-(211222333),
-(244555666), 
-(266555444),
-(233444555),
-(288777666), 
-(222330444), 
-(277654321),
-(255777888),
-(244666555),
-(233555444),
-(288444333),
-(211333222),
-(299222111);
+INSERT INTO Higiliquidos.Fornecedor (NIF_Fornecedor, Num_Fornecedor) VALUES
+(277888999, 1), 
+(299888777, 2), 
+(211222333, 3),
+(244555666, 4), 
+(266555444, 5),
+(233444555, 6),
+(288777666, 7), 
+(222330444, 8), 
+(277654321, 9),
+(255777888, 10),
+(244666555, 11),
+(233555444, 12),
+(288444333, 13),
+(211333222, 14),
+(299222111, 15);
 
 INSERT INTO Higiliquidos.Encomenda (ID, ID_Produto, Quantidade_Produto) VALUES
 --Fornecedor
@@ -323,37 +308,37 @@ INSERT INTO Higiliquidos.Encomenda_Fornecedor (NIF_Fornecedor, ID_Encomenda) VAL
 (211222333,17);
 
 
-INSERT INTO Higiliquidos.Cliente (NIF_Cliente) VALUES
-(277111000),
-(288333444), 
-(255000111), 
-(233222111), 
-(288111000),
-(211343222),
-(299444555),
-(277555666),
-(288666777),
-(255777588),
-(233888999),
-(299999000),
-(211000111),
-(233202111),
-(288101000),
-(211313222),
-(299444055),
-(277505666),
-(288666707),
-(255777878),
-(233808999),
-(299939000),
-(211000181),
-(233232111),
-(288121000),
-(211383222),
-(299484555),
-(279505666),
-(289666777),
-(211900111);
+INSERT INTO Higiliquidos.Cliente (NIF_Cliente, Num_Cliente) VALUES
+(277111000, 1),
+(288333444, 2), 
+(255000111, 3), 
+(233222111, 4), 
+(288111000, 5),
+(211343222, 6),
+(299444555, 7),
+(277555666, 8),
+(288666777, 9),
+(255777588, 10),
+(233888999, 11),
+(299999000, 12),
+(211000111, 13),
+(233202111, 14),
+(288101000, 15),
+(211313222, 16),
+(299444055, 17),
+(277505666, 18),
+(288666707, 19),
+(255777878, 20),
+(233808999, 21),
+(299939000, 22),
+(211000181, 23),
+(233232111, 24),
+(288121000, 25),
+(211383222, 26),
+(299484555, 27),
+(279505666, 28),
+(289666777, 29),
+(211900111, 30);
 
 
 
@@ -396,7 +381,7 @@ INSERT INTO Higiliquidos.Encomenda_Cliente (NIF_Cliente, ID_Encomenda) VALUES
 (288666707,52);
 
 
-INSERT INTO Higiliquidos.Funcionario (NIF_Funcionario, IBAN, Data_Inicio_Atividade, Numero_SS, Num_Func) VALUES
+INSERT INTO Higiliquidos.Funcionario (NIF_Funcionario, IBAN, Data_Inicio_Atividade, Numero_SS, Num_Func, ) VALUES
 --Vendedor
 (294455765, "PT50000201231234567890154", "15/06/2018", 200000000, 1),
 (287649264, "PT50000392221234567890155", "15/06/2018", 200000001, 1),
