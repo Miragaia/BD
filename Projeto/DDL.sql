@@ -19,6 +19,54 @@ DROP TABLE IF EXISTS Higiliquidos.Carrinha_Distribuidor;
 DROP TABLE IF EXISTS Higiliquidos.Gerente;
 DROP TABLE IF EXISTS Higiliquidos.Encomenda_Produto;
 
+CREATE TABLE Higiliquidos.Empresa (
+  NIF_Empresa INT NOT NULL,
+  Nome varchar(64) NOT NULL,
+  Email varchar(64) NOT NULL,
+  Endereco varchar(64) NOT NULL,
+  ContactoTelefonico INT NOT NULL,
+
+
+  PRIMARY KEY (NIF_Empresa)  
+);
+
+
+CREATE TABLE Higiliquidos.Carrinha (
+  Matricula varchar(8) NOT NULL,
+  Ano INT NOT NULL,
+  Marca varchar(32) NOT NULL,
+  Combustivel varchar(32) NOT NULL,
+  Peso INT NOT NULL,
+  NIF_Empresa INT NOT NULL,
+
+  PRIMARY KEY (Matricula),
+  FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)
+);
+
+
+CREATE TABLE Higiliquidos.Armazem (
+  ID INT NOT NULL,
+  Area INT NOT NULL,
+  Endereco varchar(64) NOT NULL,
+  NIF_Empresa INT NOT NULL,
+  
+  PRIMARY KEY (ID),
+  FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)  
+);
+
+
+CREATE TABLE Higiliquidos.Pessoa (  
+  NIF INT NOT NULL,
+  Nome varchar(256) NOT NULL,
+  Data_de_Nascimento DATE NOT NULL,
+  Email varchar(64) NOT NULL,
+  Morada varchar(64) NOT NULL,
+  ContactoTelefonico INT NOT NULL,
+  NIF_Empresa INT NOT NULL,
+  
+  PRIMARY KEY (NIF),
+  FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)
+);  
 
 
 CREATE TABLE Higiliquidos.Produto (
@@ -35,54 +83,12 @@ CREATE TABLE Higiliquidos.Produto (
 );
 
 
-CREATE TABLE Higiliquidos.Armazem (
-  ID INT NOT NULL,
-  Tamanho INT NOT NULL,
-  Endereco varchar(64) NOT NULL,
-  ID_Compra INT NOT NULL,
-  
-  PRIMARY KEY (ID),
-  FOREIGN KEY (ID_Compra) REFERENCES Higiliquidos.Compra(ID)
-  
-);
+CREATE TABLE Higiliquidos.Cliente (
+  NIF_Cliente INT NOT NULL,
+  Num_Cliente INT NOT NULL,
 
-
-CREATE TABLE Higiliquidos.Carrinha (
-  Matricula varchar(64) NOT NULL,
-  Ano INT NOT NULL,
-  Marca varchar(32) NOT NULL,
-  Combustivel varchar(32) NOT NULL,
-  Peso INT NOT NULL,
-
-  PRIMARY KEY (matricula)
-);
-
-
-CREATE TABLE Higiliquidos.Pessoa (  
-  NIF INT NOT NULL,
-  Nome varchar(256) NOT NULL,
-  Data_de_Nascimento DATE NOT NULL,
-  Email varchar(64) NOT NULL,
-  Morada varchar(64) NOT NULL,
-  ContactoTelefonico INT NOT NULL,
-  
-  PRIMARY KEY (NIF)
-);  
-
-
-CREATE TABLE Higiliquidos.Empresa (
-  Nome varchar(64) NOT NULL,
-  Email varchar(64) NOT NULL,
-  Endereco varchar(64) NOT NULL,
-  ContactoTelefonico INT NOT NULL,
-  ID_Armazem INT NOT NULL,
-  NIF_Pessoa INT NOT NULL,
-  Matricula_Carrinha varchar(64),
-
-  PRIMARY KEY (Nome),
-  FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
-  FOREIGN KEY (NIF_Pessoa) REFERENCES Higiliquidos.Pessoa(NIF),
-  FOREIGN KEY (Matricula_Carrinha) REFERENCES Higiliquidos.Carrinha(Matricula)
+  PRIMARY KEY (Num_Cliente),
+  FOREIGN KEY (NIF_Cliente) REFERENCES Higiliquidos.Pessoa(NIF)
 );
 
 
@@ -90,150 +96,102 @@ CREATE TABLE Higiliquidos.Fornecedor (
   NIF_Fornecedor INT NOT NULL,
   Num_Fornecedor INT NOT NULL,
 
-  PRIMARY KEY (NIF_Fornecedor),
+  PRIMARY KEY (Num_Fornecedor),
   FOREIGN KEY (NIF_Fornecedor) REFERENCES Higiliquidos.Pessoa(NIF)
-
-);
-
-CREATE TABLE Higiliquidos.Compra (
-  ID INT NOT NULL,
-  Data Date,
-  Quantidade INT NOT NULL,
-  ID_Produto INT NOT NULL,
-  ID_Armazem INT NOT NULL,
-  NIF_Fornecedor INT NOT NULL,
-
-  PRIMARY KEY (ID),
-  FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID),
-  FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
-  FOREIGN KEY (NIF_Fornecedor) REFERENCES Higiliquidos.Fornecedor(NIF_Fornecedor)
-);
-
-CREATE TABLE Higiliquidos.Encomenda (
-  ID INT NOT NULL,
-  ID_Produto INT NOT NULL,
-  Quantidade_Produto INT NOT NULL,
-
-  PRIMARY KEY (ID),
-  FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID),
-  FOREIGN KEY (Quantidade_Produto) REFERENCES Higiliquidos.Produto(Quantidade)
-);
-
-
-CREATE TABLE Higiliquidos.Encomenda_Fornecedor (
-  NIF_Fornecedor INT NOT NULL,
-  ID_Encomenda INT NOT NULL,
-
-  PRIMARY KEY (ID_Encomenda),
-  FOREIGN KEY (NIF_Fornecedor) REFERENCES Higiliquidos.Fornecedor(NIF_Fornecedor),
-  FOREIGN KEY (ID_Encomenda) REFERENCES Higiliquidos.Encomenda(ID)
-
-);
-
-
-CREATE TABLE Higiliquidos.Cliente (
-  NIF_Cliente INT NOT NULL,
-  Num_Cliente INT NOT NULL,
-
-  PRIMARY KEY (NIF_Cliente),
-  FOREIGN KEY (NIF_Cliente) REFERENCES Higiliquidos.Pessoa(NIF)
-);
-
-
-CREATE TABLE Higiliquidos.Encomenda_Cliente (
-  NIF_Cliente INT NOT NULL,
-  ID_Encomenda INT NOT NULL,
-
-  PRIMARY KEY (ID_Encomenda),
-  FOREIGN KEY (NIF_Cliente) REFERENCES Higiliquidos.Cliente(NIF_Cliente),
-  FOREIGN KEY (ID_Encomenda) REFERENCES Higiliquidos.Encomenda(ID)
 
 );
 
 
 CREATE TABLE Higiliquidos.Funcionario (
   NIF_Funcionario INT NOT NULL,
-  IBAN VARCHAR(32) NOT NULL,
+  IBAN VARCHAR(64) NOT NULL,
   Numero_SS INT NOT NULL,
   Data_Inicio_Atividade DATE NOT NULL,
   Num_Func INT NOT NULL,
 
   FOREIGN KEY (NIF_Funcionario) REFERENCES Higiliquidos.Pessoa(NIF),
-  PRIMARY KEY (NIF_Funcionario)
-);
-
-
-CREATE TABLE Higiliquidos.Vendedor (
-  NIF_Vendedor INT NOT NULL,
-  Num_Func INT NOT NULL,
-
-  FOREIGN KEY (NIF_Vendedor) REFERENCES Higiliquidos.Funcionario(NIF_Funcionario),
-  FOREIGN KEY (Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func),
-  PRIMARY KEY (NIF_Vendedor)
-);
-
-
-CREATE TABLE Higiliquidos.Distribuidor (
-  NIF_Distribuidor INT NOT NULL,
-  Matricula_Carrinha varchar(64) NOT NULL,
-  Num_Func INT NOT NULL,
-
-  PRIMARY KEY (NIF_Distribuidor),
-  FOREIGN KEY (NIF_Distribuidor) REFERENCES Higiliquidos.Funcionario(NIF_Funcionario),
-  FOREIGN KEY (Matricula_Carrinha) REFERENCES Higiliquidos.Carrinha(Matricula),
-  FOREIGN KEY (Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func)
-);
-
-
-CREATE TABLE Higiliquidos.Encomenda_Distribuidor (
-  NIF_Distribuidor INT NOT NULL,
-  ID_Encomenda INT NOT NULL,
-  Data_Entrega DATE NOT NULL,
-
-  PRIMARY KEY (Data_Entrega,  ID_Encomenda),
-  FOREIGN KEY (NIF_Distribuidor) REFERENCES Higiliquidos.Distribuidor(NIF_Distribuidor),
-  FOREIGN KEY (ID_Encomenda) REFERENCES Higiliquidos.Encomenda(ID)
-
-);
-
-
-CREATE TABLE Higiliquidos.Carrinha_Distribuidor (
-  Matricula_Carrinha varchar(64) NOT NULL,
-  NIF_Distribuidor INT NOT NULL,
-  Data_In DATE NOT NULL,
-  Data_Out DATE,
-
-  PRIMARY KEY (Matricula_Carrinha, NIF_Distribuidor),
-  FOREIGN KEY (Matricula_Carrinha) REFERENCES Higiliquidos.Carrinha(Matricula),
-  FOREIGN KEY (NIF_Distribuidor) REFERENCES Higiliquidos.Distribuidor(NIF_Distribuidor)
+  PRIMARY KEY (Num_Func)
 );
 
 
 CREATE TABLE Higiliquidos.Gerente (
-  NIF_Gerente INT NOT NULL,
-  Matricula_Carrinha varchar(64) NOT NULL,
+  Num_Gerente INT NOT NULL,
   Num_Func INT NOT NULL,
 
-  FOREIGN KEY (NIF_Gerente) REFERENCES Higiliquidos.Funcionario(NIF_Funcionario),
   FOREIGN KEY(Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func),
-  PRIMARY KEY (NIF_Gerente)
+  PRIMARY KEY (Num_Gerente)
 );
 
 
-CREATE TABLE Higiliquidos.Encomenda_Produto (
-  ID_Encomenda INT,
-  ID_Produto INT,
-  Quantidade INT,
-  FOREIGN KEY (ID_Encomenda) REFERENCES Higiliquidos.Encomenda(ID),
+CREATE TABLE Higiliquidos.Distribuidor (
+  Num_Distribuidor INT NOT NULL,
+  Num_Func INT NOT NULL,
+
+  PRIMARY KEY (Num_Distribuidor),
+  FOREIGN KEY (Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func)
+);
+
+
+CREATE TABLE Higiliquidos.Vendedor (
+  Num_Vendedor INT NOT NULL,
+  Num_Func INT NOT NULL,
+
+  FOREIGN KEY (Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func),
+  PRIMARY KEY (Num_Vendedor)
+);
+
+
+CREATE TABLE Higiliquidos.Carrinha_Distribuidor (
+  Matricula varchar(8) NOT NULL,
+  Num_Distribuidor INT NOT NULL,
+  Data_In DATE NOT NULL,
+  Data_Out DATE,
+
+  PRIMARY KEY (Matricula, Num_Distribuidor),
+  FOREIGN KEY (Matricula) REFERENCES Higiliquidos.Carrinha(Matricula),
+  FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
+);
+
+
+CREATE TABLE Higiliquidos.Compra (
+  ID INT NOT NULL,
+  Data_Compra Date,
+  Quantidade INT NOT NULL,
+  ID_Produto INT NOT NULL,
+  ID_Armazem INT NOT NULL,
+  Num_Fornecedor INT NOT NULL,
+
+  PRIMARY KEY (ID),
   FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID),
-  PRIMARY KEY (Quantidade, ID_Encomenda, ID_Produto)
+  FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
+  FOREIGN KEY (Num_Fornecedor) REFERENCES Higiliquidos.Fornecedor(Num_Fornecedor)
 );
 
 
+CREATE TABLE Higiliquidos.Venda (
+  ID INT NOT NULL,
+  Quantidade INT NOT NULL,
+  ID_Produto INT NOT NULL,
+  ID_Armazem INT NOT NULL,
+  Num_Vendedor INT NOT NULL,
+  Num_Distribuidor INT NOT NULL,
+  Num_Cliente INT NOT NULL,
+
+  PRIMARY KEY (ID),
+  FOREIGN KEY (ID_Produto) REFERENCES Higiliquidos.Produto(ID),
+  FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
+  FOREIGN KEY (Num_Fornecedor) REFERENCES Higiliquidos.Fornecedor(Num_Fornecedor),
+  FOREIGN KEY (Num_Vendedor) REFERENCES Higiliquidos.Vendedor(Num_Vendedor),
+  FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
+);
 
 
+CREATE TABLE Higiliquidos.Entrega (
+  Data_Entrega DATE NOT NULL,
+  ID_Venda INT NOT NULL,
+  Num_Distribuidor INT NOT NULL,
 
-
-
-
-
+  PRIMARY KEY(ID_Venda, Num_Distribuidor),
+  FOREIGN KEY (ID_Venda) REFERENCES Higiliquidos.Venda(ID),
+  FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
+  );
