@@ -64,7 +64,7 @@ AS
 	END;
 GO
 
-CREATE FUNCTION Higiliquidos.checkifCarrinhaMatriculaExists (@matricula VARCHAR(64)) RETURNS INT
+CREATE FUNCTION Higiliquidos.checkifCarrinhaMatriculaExists (@matricula VARCHAR(8)) RETURNS INT
 AS
 	BEGIN
 		DECLARE @counter INT;
@@ -91,11 +91,11 @@ AS
     END;
 GO  --FIZ PARA TODAS AS PESSOAS, SABER SE TEMOS DE FAZER SO PARA As diferentes pessoas só OU PARa AS 3
 
-CREATE FUNCTION Higiliquidos.checkifEmpresaExists(@nome VARCHAR(64)) RETURNS INT
+CREATE FUNCTION Higiliquidos.checkifEmpresaExists(@NIF_Empresa INT) RETURNS INT
 AS
 	BEGIN
 		DECLARE @counter INT;
-		SELECT @counter = COUNT(*) FROM Higiliquidos.Empresa WHERE nome = @nome;
+		SELECT @counter = COUNT(*) FROM Higiliquidos.Empresa WHERE NIF_Empresa = @NIF_Empresa;
 		RETURN @counter;
 	END;
 GO

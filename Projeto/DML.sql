@@ -3,14 +3,14 @@ INSERT INTO Higiliquidos.Empresa (NIF_Empresa, Nome, Email, Endereco, ContactoTe
 
 
 INSERT INTO Higiliquidos.Carrinha (Matricula, Ano, Marca, Combustivel, Peso, NIF_Empresa) VALUES
-("AA-09-BD", 2018, "Renault","Diesel",    1160, 203551783),
-("CD-89-AK", 2014, "Mercedes","Gasolina", 5000, 203551783),
-("EF-34-RT", 2019, "Fiat","Gasolina",     1500, 203551783),
-("GH-56-LM", 2016, "Ford","Diesel",       2000, 203551783),
-("IJ-78-NP", 2017, "Toyota","Gasolina",   2500, 203551783),
-("KL-90-QR", 2020, "Dacia","Gasolina",    3000, 203551783),
-("OP-45-UV", 2018, "Peugeot","Gasolina",  1800, 203551783),
-("QR-67-WX", 2016, "Citroen","Diesel",    1900, 203551783);
+("AA-09-BD", 2018, "Renault",  "Diesel",   1160, 203551783),
+("CD-89-AK", 2014, "Mercedes", "Gasolina", 5000, 203551783),
+("EF-34-RT", 2019, "Fiat",     "Gasolina", 1500, 203551783),
+("GH-56-LM", 2016, "Ford",     "Diesel",   2000, 203551783),
+("IJ-78-NP", 2017, "Toyota",   "Gasolina", 2500, 203551783),
+("KL-90-QR", 2020, "Dacia",    "Gasolina", 3000, 203551783),
+("OP-45-UV", 2018, "Peugeot",  "Gasolina", 1800, 203551783),
+("QR-67-WX", 2016, "Citroen",  "Diesel",   1900, 203551783);
 
 
 INSERT INTO Higiliquidos.Armazem(ID, Area, Endereco, NIF_Empresa) VALUES

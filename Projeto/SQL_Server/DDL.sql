@@ -1,21 +1,31 @@
 use p8g8;
-
-
-DROP TABLE IF EXISTS Higiliquidos.Empresa;
-DROP TABLE IF EXISTS Higiliquidos.Carrinha;	
-DROP TABLE IF EXISTS Higiliquidos.Armazem;
-DROP TABLE IF EXISTS Higiliquidos.Pessoa;
-DROP TABLE IF EXISTS Higiliquidos.Produto;
-DROP TABLE IF EXISTS Higiliquidos.Cliente;
-DROP TABLE IF EXISTS Higiliquidos.Fornecedor;
-DROP TABLE IF EXISTS Higiliquidos.Funcionario;
-DROP TABLE IF EXISTS Higiliquidos.Gerente;
-DROP TABLE IF EXISTS Higiliquidos.Distribuidor;
-DROP TABLE IF EXISTS Higiliquidos.Vendedor;
-DROP TABLE IF EXISTS Higiliquidos.Carrinha_Distribuidor;
-DROP TABLE IF EXISTS Higiliquidos.Compra;
-DROP TABLE IF EXISTS Higiliquidos.Venda;
 DROP TABLE IF EXISTS Higiliquidos.Entrega;
+DROP TABLE IF EXISTS Higiliquidos.Venda;
+DROP TABLE IF EXISTS Higiliquidos.Compra;
+DROP TABLE IF EXISTS Higiliquidos.Carrinha_Distribuidor;
+DROP TABLE IF EXISTS Higiliquidos.Vendedor;
+DROP TABLE IF EXISTS Higiliquidos.Distribuidor;
+DROP TABLE IF EXISTS Higiliquidos.Gerente;
+DROP TABLE IF EXISTS Higiliquidos.Funcionario;
+DROP TABLE IF EXISTS Higiliquidos.Fornecedor;
+DROP TABLE IF EXISTS Higiliquidos.Cliente;
+DROP TABLE IF EXISTS Higiliquidos.Produto;
+DROP TABLE IF EXISTS Higiliquidos.Pessoa;
+DROP TABLE IF EXISTS Higiliquidos.Armazem;
+DROP TABLE IF EXISTS Higiliquidos.Carrinha;	
+DROP TABLE IF EXISTS Higiliquidos.Empresa;
+
+DROP SCHEMA IF EXISTS Higiliquidos;
+
+GO
+CREATE SCHEMA Higiliquidos;
+GO
+
+
+
+
+
+
 
 
 CREATE TABLE Higiliquidos.Empresa (
