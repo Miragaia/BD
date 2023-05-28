@@ -1,4 +1,14 @@
 use p8g8;
+
+DROP VIEW IF EXISTS Higiliquidos.View_Vendas;
+DROP VIEW IF EXISTS Higiliquidos.ViewPessoa;
+DROP VIEW IF EXISTS Higiliquidos.View_Fornecedores;
+DROP VIEW IF EXISTS Higiliquidos.View_Clientes;
+DROP VIEW IF EXISTS Higiliquidos.View_Funcionario;
+DROP VIEW IF EXISTS Higiliquidos.View_Distribuidor;
+DROP VIEW IF EXISTS Higiliquidos.View_Gerentes;
+DROP VIEW IF EXISTS Higiliquidos.View_Vendedor;
+
 DROP TABLE IF EXISTS Higiliquidos.Entrega;
 DROP TABLE IF EXISTS Higiliquidos.Venda;
 DROP TABLE IF EXISTS Higiliquidos.Compra;
@@ -22,12 +32,6 @@ CREATE SCHEMA Higiliquidos;
 GO
 
 
-
-
-
-
-
-
 CREATE TABLE Higiliquidos.Empresa (
   NIF_Empresa INT NOT NULL,
   Nome varchar(64) NOT NULL,
@@ -38,7 +42,7 @@ CREATE TABLE Higiliquidos.Empresa (
 
   PRIMARY KEY (NIF_Empresa)  
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Carrinha (
   Matricula varchar(8) NOT NULL,
@@ -51,7 +55,7 @@ CREATE TABLE Higiliquidos.Carrinha (
   PRIMARY KEY (Matricula),
   FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Armazem (
   ID INT NOT NULL,
@@ -62,7 +66,7 @@ CREATE TABLE Higiliquidos.Armazem (
   PRIMARY KEY (ID),
   FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)  
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Pessoa (  
   NIF INT NOT NULL,
@@ -76,7 +80,7 @@ CREATE TABLE Higiliquidos.Pessoa (
   PRIMARY KEY (NIF),
   FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)
 );  
-
+GO
 
 CREATE TABLE Higiliquidos.Produto (
   ID INT NOT NULL,
@@ -90,7 +94,7 @@ CREATE TABLE Higiliquidos.Produto (
   PRIMARY KEY (ID)
 
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Cliente (
   NIF_Cliente INT NOT NULL,
@@ -99,7 +103,7 @@ CREATE TABLE Higiliquidos.Cliente (
   PRIMARY KEY (Num_Cliente),
   FOREIGN KEY (NIF_Cliente) REFERENCES Higiliquidos.Pessoa(NIF)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Fornecedor (
   NIF_Fornecedor INT NOT NULL,
@@ -109,7 +113,7 @@ CREATE TABLE Higiliquidos.Fornecedor (
   FOREIGN KEY (NIF_Fornecedor) REFERENCES Higiliquidos.Pessoa(NIF)
 
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Funcionario (
   NIF_Funcionario INT NOT NULL,
@@ -121,7 +125,7 @@ CREATE TABLE Higiliquidos.Funcionario (
   FOREIGN KEY (NIF_Funcionario) REFERENCES Higiliquidos.Pessoa(NIF),
   PRIMARY KEY (Num_Func)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Gerente (
   Num_Gerente INT NOT NULL,
@@ -130,7 +134,7 @@ CREATE TABLE Higiliquidos.Gerente (
   FOREIGN KEY(Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func),
   PRIMARY KEY (Num_Gerente)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Distribuidor (
   Num_Distribuidor INT NOT NULL,
@@ -139,7 +143,7 @@ CREATE TABLE Higiliquidos.Distribuidor (
   PRIMARY KEY (Num_Distribuidor),
   FOREIGN KEY (Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Vendedor (
   Num_Vendedor INT NOT NULL,
@@ -148,7 +152,7 @@ CREATE TABLE Higiliquidos.Vendedor (
   FOREIGN KEY (Num_Func) REFERENCES Higiliquidos.Funcionario(Num_Func),
   PRIMARY KEY (Num_Vendedor)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Carrinha_Distribuidor (
   Matricula varchar(8) NOT NULL,
@@ -160,7 +164,7 @@ CREATE TABLE Higiliquidos.Carrinha_Distribuidor (
   FOREIGN KEY (Matricula) REFERENCES Higiliquidos.Carrinha(Matricula),
   FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Compra (
   ID INT NOT NULL,
@@ -175,7 +179,7 @@ CREATE TABLE Higiliquidos.Compra (
   FOREIGN KEY (ID_Armazem) REFERENCES Higiliquidos.Armazem(ID),
   FOREIGN KEY (Num_Fornecedor) REFERENCES Higiliquidos.Fornecedor(Num_Fornecedor)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Venda (
   ID INT NOT NULL,
@@ -193,7 +197,7 @@ CREATE TABLE Higiliquidos.Venda (
   FOREIGN KEY (Num_Vendedor) REFERENCES Higiliquidos.Vendedor(Num_Vendedor),
   FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
 );
-
+GO
 
 CREATE TABLE Higiliquidos.Entrega (
   Data_Entrega DATE NOT NULL,
@@ -204,3 +208,4 @@ CREATE TABLE Higiliquidos.Entrega (
   FOREIGN KEY (ID_Venda) REFERENCES Higiliquidos.Venda(ID),
   FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
   );
+  GO
