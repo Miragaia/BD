@@ -1,0 +1,6 @@
+Funcionalidades:
+
+Listar Funcionários, dar para listar Distribuidor,Vendedor,Gerente (1)
+Listar Vendas por Vendedor,Distribuidor,Cliente  (2)
+Listar Produtos por Fornecedor (3)
+Listar Produtos por Armazem 	(4)
