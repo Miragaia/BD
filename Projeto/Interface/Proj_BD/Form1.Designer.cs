@@ -23,7 +23,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Name = "MainForm";
-            this.Text = "Youtube";
+            this.Text = "Higilíquidos";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 

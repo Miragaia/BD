@@ -14,18 +14,29 @@ namespace Proj_BD
     public partial class Form1 : Form
     {
         private SqlConnection cn;
-        private Button btnUtilizadores;
-        private Button btnConteudo;
-        private Button btnCanal;
-        private Button btnComentario;
-        private Button btnPlaylist;
-        private Button btnHistorico;
+        private Button btnEmpresa;
+        private Button btnPessoas;
+        private Button btnCompras;
+        private Button btnVendas;
+        private Button btnProdutos;
+        private Button btnArmazens;
+        private Button btnCarrinhas;
         private Panel pnlContent;
         private Button enviarUser;
-        private Button enviarFunc;
-        private Button enviarClient;
+
+        private Button enviarPessoas;
         private Button enviarForn;
-        private Button verPessoas;
+        private Button enviarCliente;
+        private Button enviarFunc;
+        private Button enviarDist;
+        private Button enviarGerente;
+        private Button enviarVendedor;
+
+
+
+
+
+
         private Button clearPnlContent;
         private Button enviarConteudo;
         private Button verConteudos;
@@ -101,76 +112,87 @@ namespace Proj_BD
 
         private void InitializeComponentCustom()
         {
-            btnUtilizadores = new Button();
-            btnUtilizadores.Text = "Pessoas";
-            btnUtilizadores.Font = new Font(btnUtilizadores.Font, FontStyle.Bold);
-            btnUtilizadores.Size = new Size(this.Width / 6, 50);
-            btnUtilizadores.Location = new Point(0, 0);
-            btnUtilizadores.BackColor = Color.White; // Define a cor de fundo como branco
-            btnUtilizadores.FlatStyle = FlatStyle.Flat;
-            btnUtilizadores.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            btnUtilizadores.Click += btnPessoas_Click;
-            this.Controls.Add(btnUtilizadores);
+            btnEmpresa = new Button();
+            btnEmpresa.Text = "Empresa";
+            btnEmpresa.Font = new Font(btnEmpresa.Font, FontStyle.Bold);
+            btnEmpresa.Size = new Size(this.Width / 7, 50);
+            btnEmpresa.Location = new Point(0, 0);
+            btnEmpresa.BackColor = Color.White; // Define a cor de fundo como branco
+            btnEmpresa.FlatStyle = FlatStyle.Flat;
+            btnEmpresa.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnEmpresa.Click += btnEmpresa_Click;
+            this.Controls.Add(btnEmpresa);
 
-            btnConteudo = new Button();
-            btnConteudo.Text = "Vendas";
-            btnConteudo.Font = new Font(btnConteudo.Font, FontStyle.Bold);
-            btnConteudo.Size = new Size(this.Width / 6, 50);
-            btnConteudo.Location = new Point(btnUtilizadores.Right, 0);
-            btnConteudo.BackColor = Color.White; // Define a cor de fundo como branco
-            btnConteudo.FlatStyle = FlatStyle.Flat;
-            btnConteudo.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            btnConteudo.Click += btnConteudo_Click;
-            this.Controls.Add(btnConteudo);
+            btnPessoas = new Button();
+            btnPessoas.Text = "Pessoas";
+            btnPessoas.Font = new Font(btnPessoas.Font, FontStyle.Bold);
+            btnPessoas.Size = new Size(this.Width / 7, 50);
+            btnPessoas.Location = new Point(btnEmpresa.Right, 0);
+            btnPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            btnPessoas.FlatStyle = FlatStyle.Flat;
+            btnPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnPessoas.Click += btnPessoas_Click;
+            this.Controls.Add(btnPessoas);
 
-            btnComentario = new Button();
-            btnComentario.Text = "Comentários";
-            btnComentario.Font = new Font(btnComentario.Font, FontStyle.Bold);
-            btnComentario.Size = new Size(this.Width / 6, 50);
-            btnComentario.Location = new Point(btnConteudo.Right, 0);
-            btnComentario.BackColor = Color.White; // Define a cor de fundo como branco
-            btnComentario.FlatStyle = FlatStyle.Flat;
-            btnComentario.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            btnComentario.Click += btnCmentarios_Click;
-            this.Controls.Add(btnComentario);
+            btnVendas = new Button();
+            btnVendas.Text = "Vendas";
+            btnVendas.Font = new Font(btnVendas.Font, FontStyle.Bold);
+            btnVendas.Size = new Size(this.Width / 7, 50);
+            btnVendas.Location = new Point(btnPessoas.Right, 0);
+            btnVendas.BackColor = Color.White; // Define a cor de fundo como branco
+            btnVendas.FlatStyle = FlatStyle.Flat;
+            btnVendas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnVendas.Click += btnVendas_Click;
+            this.Controls.Add(btnVendas);
 
-            btnPlaylist = new Button();
-            btnPlaylist.Text = "Playlist";
-            btnPlaylist.Font = new Font(btnPlaylist.Font, FontStyle.Bold);
-            btnPlaylist.Size = new Size(this.Width / 6, 50);
-            btnPlaylist.Location = new Point(btnComentario.Right, 0);
-            btnPlaylist.BackColor = Color.White; // Define a cor de fundo como branco
-            btnPlaylist.FlatStyle = FlatStyle.Flat;
-            btnPlaylist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            btnPlaylist.Click += btnPlaylist_Click;
-            this.Controls.Add(btnPlaylist);
+            btnCompras = new Button();
+            btnCompras.Text = "Compras";
+            btnCompras.Font = new Font(btnCompras.Font, FontStyle.Bold);
+            btnCompras.Size = new Size(this.Width / 7, 50);
+            btnCompras.Location = new Point(btnVendas.Right, 0);
+            btnCompras.BackColor = Color.White; // Define a cor de fundo como branco
+            btnCompras.FlatStyle = FlatStyle.Flat;
+            btnCompras.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnCompras.Click += btnCompras_Click;
+            this.Controls.Add(btnCompras);
 
-            btnHistorico = new Button();
-            btnHistorico.Text = "Histórico";
-            btnHistorico.Font = new Font(btnHistorico.Font, FontStyle.Bold);
-            btnHistorico.Size = new Size(this.Width / 6, 50);
-            btnHistorico.Location = new Point(btnPlaylist.Right, 0);
-            btnHistorico.BackColor = Color.White; // Define a cor de fundo como branco
-            btnHistorico.FlatStyle = FlatStyle.Flat;
-            btnHistorico.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            btnHistorico.Click += btnHistorico_Click;
-            this.Controls.Add(btnHistorico);
+            btnProdutos = new Button();
+            btnProdutos.Text = "Produtos";
+            btnProdutos.Font = new Font(btnProdutos.Font, FontStyle.Bold);
+            btnProdutos.Size = new Size(this.Width / 7, 50);
+            btnProdutos.Location = new Point(btnCompras.Right, 0);
+            btnProdutos.BackColor = Color.White; // Define a cor de fundo como branco
+            btnProdutos.FlatStyle = FlatStyle.Flat;
+            btnProdutos.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnProdutos.Click += btnProdutos_Click;
+            this.Controls.Add(btnProdutos);
 
-            btnCanal = new Button();
-            btnCanal.Text = "Canal";
-            btnCanal.Font = new Font(btnCanal.Font, FontStyle.Bold);
-            btnCanal.Size = new Size(this.Width / 6, 50);
-            btnCanal.Location = new Point(btnHistorico.Right, 0);
-            btnCanal.BackColor = Color.White; // Define a cor de fundo como branco
-            btnCanal.FlatStyle = FlatStyle.Flat;
-            btnCanal.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            btnCanal.Click += btnCanal_Click;
-            this.Controls.Add(btnCanal);
+            btnArmazens = new Button();
+            btnArmazens.Text = "Armazens";
+            btnArmazens.Font = new Font(btnArmazens.Font, FontStyle.Bold);
+            btnArmazens.Size = new Size(this.Width / 7, 50);
+            btnArmazens.Location = new Point(btnProdutos.Right, 0);
+            btnArmazens.BackColor = Color.White; // Define a cor de fundo como branco
+            btnArmazens.FlatStyle = FlatStyle.Flat;
+            btnArmazens.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnArmazens.Click += btnArmazens_Click;
+            this.Controls.Add(btnArmazens);
+
+            btnCarrinhas = new Button();
+            btnCarrinhas.Text = "Carrinhas";
+            btnCarrinhas.Font = new Font(btnArmazens.Font, FontStyle.Bold);
+            btnCarrinhas.Size = new Size(this.Width / 7, 50);
+            btnCarrinhas.Location = new Point(btnArmazens.Right, 0);
+            btnCarrinhas.BackColor = Color.White; // Define a cor de fundo como branco
+            btnCarrinhas.FlatStyle = FlatStyle.Flat;
+            btnCarrinhas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            btnCarrinhas.Click += btnCarrinhas_Click;
+            this.Controls.Add(btnCarrinhas);
 
             pnlContent = new Panel();
-            pnlContent.Size = new Size(this.Width, this.Height - btnUtilizadores.Height);
-            pnlContent.Location = new Point(0, btnUtilizadores.Bottom);
-            pnlContent.BackColor = Color.DarkRed;
+            pnlContent.Size = new Size(this.Width, this.Height - btnEmpresa.Height);
+            pnlContent.Location = new Point(0, btnEmpresa.Bottom);
+            pnlContent.BackColor = Color.Gray;
             pnlContent.BorderStyle = BorderStyle.Fixed3D;
             this.Controls.Add(pnlContent);
 
@@ -186,7 +208,7 @@ namespace Proj_BD
             // Desenhar uma linha preta na parte superior do formulário
             g.DrawLine(pen, 0, 0, this.Width, 0);
         }
-        
+
         private void btnCanal_Click(object sender, EventArgs e)
         {
             // Limpar os dados do painel
@@ -361,12 +383,195 @@ namespace Proj_BD
             }
         }
 
-        private void btnFunc_Click(object sender, EventArgs e)
+        private void btnEmpresa_Click(object sender, EventArgs e)
         {
             // Limpar os dados do painel
             pnlContent.Controls.Clear();
+
+
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarEmpresa();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
         }
 
+        private void btnVendas_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarVendas();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+        }
+
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarCompras();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+        }
+
+        private void btnProdutos_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarProdutos();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+        }
+
+
+        private void btnArmazens_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarArmazens();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+        }
+
+        private void btnCarrinhas_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarCarrinhas();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
 
         private void btnPessoas_Click(object sender, EventArgs e)
         {
@@ -384,16 +589,16 @@ namespace Proj_BD
             enviarPessoas.Click += btnPessoas_Click;
             pnlContent.Controls.Add(enviarPessoas);
 
-            Button enviarForn = new Button();
-            enviarForn.Text = "Listar Fornecedores";
-            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
-            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
-            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
-            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
-            enviarForn.FlatStyle = FlatStyle.Flat;
-            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            enviarForn.Click += btnForn_Click;
-            pnlContent.Controls.Add(enviarForn);
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
 
             Button enviarCliente = new Button();
             enviarCliente.Text = "Listar Clientes";
@@ -406,16 +611,16 @@ namespace Proj_BD
             enviarCliente.Click += btnCliente_Click;
             pnlContent.Controls.Add(enviarCliente);
 
-            Button enviarFunc = new Button();
-            enviarFunc.Text = "Listar Funcionarios";
-            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
-            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
-            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
-            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
-            enviarFunc.FlatStyle = FlatStyle.Flat;
-            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            enviarFunc.Click += btnFunc_Click;
-            pnlContent.Controls.Add(enviarFunc);
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
 
             Button enviarDist = new Button();
             enviarDist.Text = "Listar Distribuidores";
@@ -476,6 +681,727 @@ namespace Proj_BD
 
             // Obter os utilizadores do DataRepository
             DataTable utilizadores = dataRepository.ListarPessoas();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
+
+        private void btnFunc_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+            Button enviarPessoas = new Button();
+            enviarPessoas.Text = "Listar Pessoas";
+            enviarPessoas.Font = new Font(enviarPessoas.Font, FontStyle.Bold);
+            enviarPessoas.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarPessoas.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 270);
+            enviarPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarPessoas.FlatStyle = FlatStyle.Flat;
+            enviarPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarPessoas.Click += btnPessoas_Click;
+            pnlContent.Controls.Add(enviarPessoas);
+
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
+
+            Button enviarCliente = new Button();
+            enviarCliente.Text = "Listar Clientes";
+            enviarCliente.Font = new Font(enviarCliente.Font, FontStyle.Bold);
+            enviarCliente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarCliente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 190);
+            enviarCliente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarCliente.FlatStyle = FlatStyle.Flat;
+            enviarCliente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarCliente.Click += btnCliente_Click;
+            pnlContent.Controls.Add(enviarCliente);
+
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
+
+            Button enviarDist = new Button();
+            enviarDist.Text = "Listar Distribuidores";
+            enviarDist.Font = new Font(enviarDist.Font, FontStyle.Bold);
+            enviarDist.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarDist.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 110);
+            enviarDist.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarDist.FlatStyle = FlatStyle.Flat;
+            enviarDist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarDist.Click += btnDist_Click;
+            pnlContent.Controls.Add(enviarDist);
+
+            Button enviarGerente = new Button();
+            enviarGerente.Text = "Listar Gerente";
+            enviarGerente.Font = new Font(enviarGerente.Font, FontStyle.Bold);
+            enviarGerente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarGerente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 70);
+            enviarGerente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarGerente.FlatStyle = FlatStyle.Flat;
+            enviarGerente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarGerente.Click += btnGerente_Click;
+            pnlContent.Controls.Add(enviarGerente);
+
+            Button enviarVendedor = new Button();
+            enviarVendedor.Text = "Listar Vendedor";
+            enviarVendedor.Font = new Font(enviarVendedor.Font, FontStyle.Bold);
+            enviarVendedor.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarVendedor.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 30);
+            enviarVendedor.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarVendedor.FlatStyle = FlatStyle.Flat;
+            enviarVendedor.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarVendedor.Click += btnVendedor_Click;
+            pnlContent.Controls.Add(enviarVendedor);
+
+            /*
+            Button enviarUser = new Button();
+            enviarUser.Text = "Criar Pessoa";
+            enviarUser.Font = new Font(enviarUser.Font, FontStyle.Bold);
+            enviarUser.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarUser.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 130);
+            enviarUser.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarUser.FlatStyle = FlatStyle.Flat;
+            enviarUser.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarUser.Click += CriarPessoa_Click;
+            pnlContent.Controls.Add(enviarUser);
+            */
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarFunc();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
+
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+            Button enviarPessoas = new Button();
+            enviarPessoas.Text = "Listar Pessoas";
+            enviarPessoas.Font = new Font(enviarPessoas.Font, FontStyle.Bold);
+            enviarPessoas.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarPessoas.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 270);
+            enviarPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarPessoas.FlatStyle = FlatStyle.Flat;
+            enviarPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarPessoas.Click += btnPessoas_Click;
+            pnlContent.Controls.Add(enviarPessoas);
+
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
+
+            Button enviarCliente = new Button();
+            enviarCliente.Text = "Listar Clientes";
+            enviarCliente.Font = new Font(enviarCliente.Font, FontStyle.Bold);
+            enviarCliente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarCliente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 190);
+            enviarCliente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarCliente.FlatStyle = FlatStyle.Flat;
+            enviarCliente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarCliente.Click += btnCliente_Click;
+            pnlContent.Controls.Add(enviarCliente);
+
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
+
+            Button enviarDist = new Button();
+            enviarDist.Text = "Listar Distribuidores";
+            enviarDist.Font = new Font(enviarDist.Font, FontStyle.Bold);
+            enviarDist.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarDist.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 110);
+            enviarDist.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarDist.FlatStyle = FlatStyle.Flat;
+            enviarDist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarDist.Click += btnDist_Click;
+            pnlContent.Controls.Add(enviarDist);
+
+            Button enviarGerente = new Button();
+            enviarGerente.Text = "Listar Gerente";
+            enviarGerente.Font = new Font(enviarGerente.Font, FontStyle.Bold);
+            enviarGerente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarGerente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 70);
+            enviarGerente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarGerente.FlatStyle = FlatStyle.Flat;
+            enviarGerente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarGerente.Click += btnGerente_Click;
+            pnlContent.Controls.Add(enviarGerente);
+
+            Button enviarVendedor = new Button();
+            enviarVendedor.Text = "Listar Vendedor";
+            enviarVendedor.Font = new Font(enviarVendedor.Font, FontStyle.Bold);
+            enviarVendedor.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarVendedor.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 30);
+            enviarVendedor.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarVendedor.FlatStyle = FlatStyle.Flat;
+            enviarVendedor.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarVendedor.Click += btnVendedor_Click;
+            pnlContent.Controls.Add(enviarVendedor);
+
+            /*
+            Button enviarUser = new Button();
+            enviarUser.Text = "Criar Pessoa";
+            enviarUser.Font = new Font(enviarUser.Font, FontStyle.Bold);
+            enviarUser.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarUser.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 130);
+            enviarUser.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarUser.FlatStyle = FlatStyle.Flat;
+            enviarUser.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarUser.Click += CriarPessoa_Click;
+            pnlContent.Controls.Add(enviarUser);
+            */
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarClientes();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
+
+        private void btnForn_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+            Button enviarPessoas = new Button();
+            enviarPessoas.Text = "Listar Pessoas";
+            enviarPessoas.Font = new Font(enviarPessoas.Font, FontStyle.Bold);
+            enviarPessoas.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarPessoas.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 270);
+            enviarPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarPessoas.FlatStyle = FlatStyle.Flat;
+            enviarPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarPessoas.Click += btnPessoas_Click;
+            pnlContent.Controls.Add(enviarPessoas);
+
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
+
+            Button enviarCliente = new Button();
+            enviarCliente.Text = "Listar Clientes";
+            enviarCliente.Font = new Font(enviarCliente.Font, FontStyle.Bold);
+            enviarCliente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarCliente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 190);
+            enviarCliente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarCliente.FlatStyle = FlatStyle.Flat;
+            enviarCliente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarCliente.Click += btnCliente_Click;
+            pnlContent.Controls.Add(enviarCliente);
+
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
+
+            Button enviarDist = new Button();
+            enviarDist.Text = "Listar Distribuidores";
+            enviarDist.Font = new Font(enviarDist.Font, FontStyle.Bold);
+            enviarDist.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarDist.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 110);
+            enviarDist.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarDist.FlatStyle = FlatStyle.Flat;
+            enviarDist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarDist.Click += btnDist_Click;
+            pnlContent.Controls.Add(enviarDist);
+
+            Button enviarGerente = new Button();
+            enviarGerente.Text = "Listar Gerente";
+            enviarGerente.Font = new Font(enviarGerente.Font, FontStyle.Bold);
+            enviarGerente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarGerente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 70);
+            enviarGerente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarGerente.FlatStyle = FlatStyle.Flat;
+            enviarGerente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarGerente.Click += btnGerente_Click;
+            pnlContent.Controls.Add(enviarGerente);
+
+            Button enviarVendedor = new Button();
+            enviarVendedor.Text = "Listar Vendedor";
+            enviarVendedor.Font = new Font(enviarVendedor.Font, FontStyle.Bold);
+            enviarVendedor.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarVendedor.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 30);
+            enviarVendedor.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarVendedor.FlatStyle = FlatStyle.Flat;
+            enviarVendedor.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarVendedor.Click += btnVendedor_Click;
+            pnlContent.Controls.Add(enviarVendedor);
+
+            /*
+            Button enviarUser = new Button();
+            enviarUser.Text = "Criar Pessoa";
+            enviarUser.Font = new Font(enviarUser.Font, FontStyle.Bold);
+            enviarUser.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarUser.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 130);
+            enviarUser.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarUser.FlatStyle = FlatStyle.Flat;
+            enviarUser.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarUser.Click += CriarPessoa_Click;
+            pnlContent.Controls.Add(enviarUser);
+            */
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarFornecedores();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
+
+        private void btnDist_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+            Button enviarPessoas = new Button();
+            enviarPessoas.Text = "Listar Pessoas";
+            enviarPessoas.Font = new Font(enviarPessoas.Font, FontStyle.Bold);
+            enviarPessoas.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarPessoas.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 270);
+            enviarPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarPessoas.FlatStyle = FlatStyle.Flat;
+            enviarPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarPessoas.Click += btnPessoas_Click;
+            pnlContent.Controls.Add(enviarPessoas);
+
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
+
+            Button enviarCliente = new Button();
+            enviarCliente.Text = "Listar Clientes";
+            enviarCliente.Font = new Font(enviarCliente.Font, FontStyle.Bold);
+            enviarCliente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarCliente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 190);
+            enviarCliente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarCliente.FlatStyle = FlatStyle.Flat;
+            enviarCliente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarCliente.Click += btnCliente_Click;
+            pnlContent.Controls.Add(enviarCliente);
+
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
+
+            Button enviarDist = new Button();
+            enviarDist.Text = "Listar Distribuidores";
+            enviarDist.Font = new Font(enviarDist.Font, FontStyle.Bold);
+            enviarDist.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarDist.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 110);
+            enviarDist.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarDist.FlatStyle = FlatStyle.Flat;
+            enviarDist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarDist.Click += btnDist_Click;
+            pnlContent.Controls.Add(enviarDist);
+
+            Button enviarGerente = new Button();
+            enviarGerente.Text = "Listar Gerente";
+            enviarGerente.Font = new Font(enviarGerente.Font, FontStyle.Bold);
+            enviarGerente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarGerente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 70);
+            enviarGerente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarGerente.FlatStyle = FlatStyle.Flat;
+            enviarGerente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarGerente.Click += btnGerente_Click;
+            pnlContent.Controls.Add(enviarGerente);
+
+            Button enviarVendedor = new Button();
+            enviarVendedor.Text = "Listar Vendedor";
+            enviarVendedor.Font = new Font(enviarVendedor.Font, FontStyle.Bold);
+            enviarVendedor.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarVendedor.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 30);
+            enviarVendedor.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarVendedor.FlatStyle = FlatStyle.Flat;
+            enviarVendedor.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarVendedor.Click += btnVendedor_Click;
+            pnlContent.Controls.Add(enviarVendedor);
+
+            /*
+            Button enviarUser = new Button();
+            enviarUser.Text = "Criar Pessoa";
+            enviarUser.Font = new Font(enviarUser.Font, FontStyle.Bold);
+            enviarUser.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarUser.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 130);
+            enviarUser.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarUser.FlatStyle = FlatStyle.Flat;
+            enviarUser.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarUser.Click += CriarPessoa_Click;
+            pnlContent.Controls.Add(enviarUser);
+            */
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarDistribuidores();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
+
+        private void btnGerente_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+            Button enviarPessoas = new Button();
+            enviarPessoas.Text = "Listar Pessoas";
+            enviarPessoas.Font = new Font(enviarPessoas.Font, FontStyle.Bold);
+            enviarPessoas.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarPessoas.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 270);
+            enviarPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarPessoas.FlatStyle = FlatStyle.Flat;
+            enviarPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarPessoas.Click += btnPessoas_Click;
+            pnlContent.Controls.Add(enviarPessoas);
+
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
+
+            Button enviarCliente = new Button();
+            enviarCliente.Text = "Listar Clientes";
+            enviarCliente.Font = new Font(enviarCliente.Font, FontStyle.Bold);
+            enviarCliente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarCliente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 190);
+            enviarCliente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarCliente.FlatStyle = FlatStyle.Flat;
+            enviarCliente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarCliente.Click += btnCliente_Click;
+            pnlContent.Controls.Add(enviarCliente);
+
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
+
+            Button enviarDist = new Button();
+            enviarDist.Text = "Listar Distribuidores";
+            enviarDist.Font = new Font(enviarDist.Font, FontStyle.Bold);
+            enviarDist.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarDist.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 110);
+            enviarDist.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarDist.FlatStyle = FlatStyle.Flat;
+            enviarDist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarDist.Click += btnDist_Click;
+            pnlContent.Controls.Add(enviarDist);
+
+            Button enviarGerente = new Button();
+            enviarGerente.Text = "Listar Gerente";
+            enviarGerente.Font = new Font(enviarGerente.Font, FontStyle.Bold);
+            enviarGerente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarGerente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 70);
+            enviarGerente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarGerente.FlatStyle = FlatStyle.Flat;
+            enviarGerente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarGerente.Click += btnGerente_Click;
+            pnlContent.Controls.Add(enviarGerente);
+
+            Button enviarVendedor = new Button();
+            enviarVendedor.Text = "Listar Vendedor";
+            enviarVendedor.Font = new Font(enviarVendedor.Font, FontStyle.Bold);
+            enviarVendedor.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarVendedor.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 30);
+            enviarVendedor.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarVendedor.FlatStyle = FlatStyle.Flat;
+            enviarVendedor.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarVendedor.Click += btnVendedor_Click;
+            pnlContent.Controls.Add(enviarVendedor);
+
+            /*
+            Button enviarUser = new Button();
+            enviarUser.Text = "Criar Pessoa";
+            enviarUser.Font = new Font(enviarUser.Font, FontStyle.Bold);
+            enviarUser.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarUser.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 130);
+            enviarUser.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarUser.FlatStyle = FlatStyle.Flat;
+            enviarUser.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarUser.Click += CriarPessoa_Click;
+            pnlContent.Controls.Add(enviarUser);
+            */
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarGerentes();
+
+            // Criar uma DataGridView para exibir os utilizadores
+            DataGridView dgvUtilizadores = new DataGridView();
+            dgvUtilizadores.BackgroundColor = Color.Gray;
+            dgvUtilizadores.Font = new Font(dgvUtilizadores.Font, FontStyle.Bold);
+            dgvUtilizadores.DataSource = utilizadores;
+            dgvUtilizadores.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(dgvUtilizadores);
+
+
+        }
+
+        private void btnVendedor_Click(object sender, EventArgs e)
+        {
+            // Limpar os dados do painel
+            pnlContent.Controls.Clear();
+
+            Button enviarPessoas = new Button();
+            enviarPessoas.Text = "Listar Pessoas";
+            enviarPessoas.Font = new Font(enviarPessoas.Font, FontStyle.Bold);
+            enviarPessoas.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarPessoas.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 270);
+            enviarPessoas.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarPessoas.FlatStyle = FlatStyle.Flat;
+            enviarPessoas.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarPessoas.Click += btnPessoas_Click;
+            pnlContent.Controls.Add(enviarPessoas);
+
+            Button enviarFunc = new Button();
+            enviarFunc.Text = "Listar Funcionarios";
+            enviarFunc.Font = new Font(enviarFunc.Font, FontStyle.Bold);
+            enviarFunc.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarFunc.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 230);
+            enviarFunc.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarFunc.FlatStyle = FlatStyle.Flat;
+            enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarFunc.Click += btnFunc_Click;
+            pnlContent.Controls.Add(enviarFunc);
+
+            Button enviarCliente = new Button();
+            enviarCliente.Text = "Listar Clientes";
+            enviarCliente.Font = new Font(enviarCliente.Font, FontStyle.Bold);
+            enviarCliente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarCliente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 190);
+            enviarCliente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarCliente.FlatStyle = FlatStyle.Flat;
+            enviarCliente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarCliente.Click += btnCliente_Click;
+            pnlContent.Controls.Add(enviarCliente);
+
+            Button enviarForn = new Button();
+            enviarForn.Text = "Listar Fornecedores";
+            enviarForn.Font = new Font(enviarForn.Font, FontStyle.Bold);
+            enviarForn.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarForn.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 150);
+            enviarForn.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarForn.FlatStyle = FlatStyle.Flat;
+            enviarForn.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarForn.Click += btnForn_Click;
+            pnlContent.Controls.Add(enviarForn);
+
+            Button enviarDist = new Button();
+            enviarDist.Text = "Listar Distribuidores";
+            enviarDist.Font = new Font(enviarDist.Font, FontStyle.Bold);
+            enviarDist.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarDist.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 110);
+            enviarDist.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarDist.FlatStyle = FlatStyle.Flat;
+            enviarDist.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarDist.Click += btnDist_Click;
+            pnlContent.Controls.Add(enviarDist);
+
+            Button enviarGerente = new Button();
+            enviarGerente.Text = "Listar Gerente";
+            enviarGerente.Font = new Font(enviarGerente.Font, FontStyle.Bold);
+            enviarGerente.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarGerente.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 70);
+            enviarGerente.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarGerente.FlatStyle = FlatStyle.Flat;
+            enviarGerente.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarGerente.Click += btnGerente_Click;
+            pnlContent.Controls.Add(enviarGerente);
+
+            Button enviarVendedor = new Button();
+            enviarVendedor.Text = "Listar Vendedor";
+            enviarVendedor.Font = new Font(enviarVendedor.Font, FontStyle.Bold);
+            enviarVendedor.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarVendedor.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 30);
+            enviarVendedor.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarVendedor.FlatStyle = FlatStyle.Flat;
+            enviarVendedor.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarVendedor.Click += btnVendedor_Click;
+            pnlContent.Controls.Add(enviarVendedor);
+
+            /*
+            Button enviarUser = new Button();
+            enviarUser.Text = "Criar Pessoa";
+            enviarUser.Font = new Font(enviarUser.Font, FontStyle.Bold);
+            enviarUser.Size = new Size(200, 30); // Ajusta o tamanho do botão
+            enviarUser.Location = new Point(pnlContent.Width - 230, pnlContent.Height / 2 - 130);
+            enviarUser.BackColor = Color.White; // Define a cor de fundo como branco
+            enviarUser.FlatStyle = FlatStyle.Flat;
+            enviarUser.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            enviarUser.Click += CriarPessoa_Click;
+            pnlContent.Controls.Add(enviarUser);
+            */
+
+            clearPnlContent = new Button();
+            clearPnlContent.Text = "Close";
+            clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
+            clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
+            clearPnlContent.FlatStyle = FlatStyle.Flat;
+            clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
+            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
+            clearPnlContent.Click += ClearPnlContent_Click;
+            pnlContent.Controls.Add(clearPnlContent);
+
+            // Obter os utilizadores do DataRepository
+            DataTable utilizadores = dataRepository.ListarVendedores();
 
             // Criar uma DataGridView para exibir os utilizadores
             DataGridView dgvUtilizadores = new DataGridView();
@@ -610,7 +1536,7 @@ namespace Proj_BD
             enviarFunc.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
             enviarFunc.Click += enviarFunc_Click;
             pnlContent.Controls.Add(enviarFunc);
-            
+
             Button enviarClient = new Button();
             enviarClient.Text = "Criar Cliente";
             enviarClient.Font = new Font(enviarClient.Font, FontStyle.Bold);
