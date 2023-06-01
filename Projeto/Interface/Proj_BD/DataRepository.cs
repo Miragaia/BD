@@ -21,12 +21,12 @@ namespace Proj_BD
 
         private bool verifyConnection()
         {
-            if (connection == null) 
+            if (connection == null)
                 connection = getConnection();
 
             if (connection.State != ConnectionState.Open)
                 connection.Open();
-    
+
 
             return (connection.State == ConnectionState.Open);
         }
@@ -37,9 +37,9 @@ namespace Proj_BD
 
 
         /// /////////////////////////////////////// Mudar Queries ////////////////////////////////////////
-         public DataTable ProcurarUser(string username)
-         {
-  
+        public DataTable ProcurarUser(string username)
+        {
+
             if (!verifyConnection())
             {
                 MessageBox.Show("No Connection!");
@@ -47,7 +47,7 @@ namespace Proj_BD
             }
 
             string query = "SELECT cn.Nome_Utilizador AS NomeCanal, cn.Num_Subscritores, cn.Num_conteudo, c.Titulo AS TituloConteudo, c.Tipo AS TipoConteudo, c.Num_Likes AS LikesConteudo, c.Num_Views AS VisualizaçõesConteudo, c.Duracao AS DuraçãoConteudo, c.Data_Pub AS DataPublicaçãoConteudo, com.Autor AS AutorComentário, com.Texto AS TextoComentário, com.Data_Comentário AS DataComentário, com2.Autor AS AutorComentárioVídeo, com2.Texto AS TextoComentárioVídeo, com2.Data_Comentário AS DataComentárioVídeo FROM [p5g2].[Youtube].[Canal] cn INNER JOIN [p5g2].[Youtube].[Conteúdo] c ON cn.Nome_Utilizador = c.Autor LEFT JOIN [p5g2].[Youtube].[Comentários] com ON com.Codigo = c.Codigo AND com.Autor = cn.Nome_Utilizador LEFT JOIN [p5g2].[Youtube].[Comentários] com2 ON com2.Codigo = c.Codigo";
-            
+
             if (!string.IsNullOrEmpty(username))
             {
                 query += " WHERE cn.Nome_Utilizador = @NomeCanal";
@@ -60,7 +60,8 @@ namespace Proj_BD
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    try { 
+                    try
+                    {
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
                             if (!string.IsNullOrEmpty(username))
@@ -85,8 +86,8 @@ namespace Proj_BD
                 Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
                 return null;
             }
-        
-         }
+
+        }
 
         // Utilzadores
         public bool InserirUtilizador(int nifP, string nomePessoa, DateTime nascimentoText, string email, string morada, int tel, int nifE)
@@ -108,7 +109,7 @@ namespace Proj_BD
                     command.Parameters.AddWithValue("@Morada", morada);
                     command.Parameters.AddWithValue("@ContactoTelefonico", tel);
                     command.Parameters.AddWithValue("@NIF_Empresa", nifE);
-                    
+
 
                     int rowsAffected = command.ExecuteNonQuery();
 
@@ -154,6 +155,366 @@ namespace Proj_BD
             }
         }
 
+        public DataTable ListarClientes()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Cliente]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarFunc()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Funcionario]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarVendedores()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Vendedor]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarFornecedores()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Fornecedor]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarGerentes()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Gerente]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarDistribuidores()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Distribuidor]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarEmpresa()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Empresa]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarVendas()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Venda]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarCompras()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Compra]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarProdutos()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Produto]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarArmazens()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Armazem]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable ListarCarrinhas()
+        {
+            try
+            {
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT * FROM [p8g8].[Higiliquidos].[Carrinha]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter utilizadores: " + ex.Message);
+                return null;
+            }
+        }
+
 
         // Conteudo
         public bool InserirConteudo(string tipoConteudo, int id, string EstadoConteudo, int views, DateTime pub, TimeSpan duracao, string AutorConteudo, string TituloConteudo, int likes)
@@ -180,7 +541,7 @@ namespace Proj_BD
 
 
                     int rowsAffected = command.ExecuteNonQuery();
-                    
+
                     // apagar a proxima linha de codigo esta ca so para testes
                     return rowsAffected > 0;
                 }
@@ -191,7 +552,7 @@ namespace Proj_BD
                 return false;
             }
         }
-        public DataTable ListarConteudo() 
+        public DataTable ListarConteudo()
         {
             try
             {
@@ -325,7 +686,7 @@ namespace Proj_BD
         }
 
         // PlayList
-        public bool InserirPlayList(String Titulo,int CodigoP,String Autor,int Num_Likes,int EstadoP)
+        public bool InserirPlayList(String Titulo, int CodigoP, String Autor, int Num_Likes, int EstadoP)
         {
             //apos o user clicar no mentario em vez de dar clear a tudo como fazia antes mostrar o comentario ou seja dar clear dos buttons e das labels e dar print com o codigo do conteudo, nome do conteudo, user que comentou, comentario e data 
             try
@@ -338,10 +699,10 @@ namespace Proj_BD
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@TituloPlaylist",Titulo);
+                    command.Parameters.AddWithValue("@TituloPlaylist", Titulo);
                     command.Parameters.AddWithValue("@CodigoP", CodigoP);
                     command.Parameters.AddWithValue("@AutorPlaylist", Autor);
-                    command.Parameters.AddWithValue("@Num_Likes",Num_Likes);
+                    command.Parameters.AddWithValue("@Num_Likes", Num_Likes);
                     command.Parameters.AddWithValue("@Estado", EstadoP);
 
                     int rowsAffected = command.ExecuteNonQuery();
@@ -385,22 +746,23 @@ namespace Proj_BD
         }
 
 
-      public DataTable ListarConteudoPlaylist(int CodigoP){
-
-        //by the code of the playlist we can see the content of the playlist
-        try
+        public DataTable ListarConteudoPlaylist(int CodigoP)
         {
-            if (!verifyConnection())
-            {
-                Console.WriteLine("No Connection!");
-                return null;
-            }
 
-            string query= "SELECT C.Codigo, C.Titulo, C.Autor, C.Tipo, C.Estado, C.Dura, C.Num_Likes, C.Num_Views, C.Data_Pub FROM Youtube.Conteúdo AS C INNER JOIN Youtube.PlaylistVideo AS PV ON C.Codigo = PV.VideoID WHERE PV.PlaylistID = @playlistID";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
+            //by the code of the playlist we can see the content of the playlist
+            try
             {
-                command.Parameters.AddWithValue("@playlistID", CodigoP);
+                if (!verifyConnection())
+                {
+                    Console.WriteLine("No Connection!");
+                    return null;
+                }
+
+                string query = "SELECT C.Codigo, C.Titulo, C.Autor, C.Tipo, C.Estado, C.Dura, C.Num_Likes, C.Num_Views, C.Data_Pub FROM Youtube.Conteúdo AS C INNER JOIN Youtube.PlaylistVideo AS PV ON C.Codigo = PV.VideoID WHERE PV.PlaylistID = @playlistID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@playlistID", CodigoP);
                     try
                     {
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -416,16 +778,16 @@ namespace Proj_BD
                         return null;
                     }
                 }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Erro ao obter conteudo da playlist: " + ex.Message);
-            return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao obter conteudo da playlist: " + ex.Message);
+                return null;
+            }
+
         }
 
-      }
-
-         // Historicos
+        // Historicos
         public bool InserirHistorico()
         {
             //apos o user clicar no mentario em vez de dar clear a tudo como fazia antes mostrar o comentario ou seja dar clear dos buttons e das labels e dar print com o codigo do conteudo, nome do conteudo, user que comentou, comentario e data 
@@ -446,7 +808,7 @@ namespace Proj_BD
                     command.Parameters.AddWithValue("@Data_de_Visualização", ViewsConteudo);
                     */
                     int rowsAffected = command.ExecuteNonQuery();
-                
+
                     return rowsAffected > 0;
                 }
             }
