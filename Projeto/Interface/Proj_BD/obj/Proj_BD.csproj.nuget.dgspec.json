@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\migue\\2-ANO\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj": {}
+    "C:\\Users\\gonca\\Disciplinas\\ano2\\BD\\BD_github\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\migue\\2-ANO\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj": {
+    "C:\\Users\\gonca\\Disciplinas\\ano2\\BD\\BD_github\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\migue\\2-ANO\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj",
+        "projectUniqueName": "C:\\Users\\gonca\\Disciplinas\\ano2\\BD\\BD_github\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj",
         "projectName": "Proj_BD",
-        "projectPath": "C:\\Users\\migue\\2-ANO\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj",
-        "packagesPath": "C:\\Users\\migue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\migue\\2-ANO\\BD\\Projeto\\Interface\\Proj_BD\\obj\\",
+        "projectPath": "C:\\Users\\gonca\\Disciplinas\\ano2\\BD\\BD_github\\BD\\Projeto\\Interface\\Proj_BD\\Proj_BD.csproj",
+        "packagesPath": "C:\\Users\\gonca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gonca\\Disciplinas\\ano2\\BD\\BD_github\\BD\\Projeto\\Interface\\Proj_BD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\migue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gonca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

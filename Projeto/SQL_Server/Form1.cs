@@ -209,7 +209,7 @@ namespace Proj_BD
             g.DrawLine(pen, 0, 0, this.Width, 0);
         }
 
-        private void btnCanal_Click(object sender, EventArgs e)
+        /*private void btnCanal_Click(object sender, EventArgs e)
         {
             // Limpar os dados do painel
             pnlContent.Controls.Clear();
@@ -260,6 +260,7 @@ namespace Proj_BD
             clearPnlContent.Click += ClearPnlContent_Click;
             pnlContent.Controls.Add(clearPnlContent);
         }
+
         private void ProcurarUser_Click(object sender, EventArgs e)
         {
             // Obter os valores dos campos de texto
@@ -289,7 +290,7 @@ namespace Proj_BD
             dgvUtilizadores.DataSource = utilizadores;
             dgvUtilizadores.Dock = DockStyle.Fill;
             pnlContent.Controls.Add(dgvUtilizadores);
-        }
+        }*/
 
         //
         // Utilizador
@@ -388,15 +389,13 @@ namespace Proj_BD
             // Limpar os dados do painel
             pnlContent.Controls.Clear();
 
-
-
             clearPnlContent = new Button();
             clearPnlContent.Text = "Close";
             clearPnlContent.Font = new Font(clearPnlContent.Font, FontStyle.Bold);
             clearPnlContent.BackColor = Color.White; // Define a cor de fundo como brancoCriarPessoa_Click
             clearPnlContent.FlatStyle = FlatStyle.Flat;
             clearPnlContent.FlatAppearance.BorderColor = Color.Black; // Define a cor da borda como preta
-            clearPnlContent.Size = new Size(80, 30);
+            clearPnlContent.Size = new Size(-40, 30);
             clearPnlContent.Location = new Point(pnlContent.Width - 250, pnlContent.Height - 200);
             clearPnlContent.Click += ClearPnlContent_Click;
             pnlContent.Controls.Add(clearPnlContent);

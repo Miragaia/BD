@@ -25,11 +25,11 @@ DROP TABLE IF EXISTS Higiliquidos.Armazem;
 DROP TABLE IF EXISTS Higiliquidos.Carrinha;	
 DROP TABLE IF EXISTS Higiliquidos.Empresa;
 
-DROP SCHEMA IF EXISTS Higiliquidos;
+
 
 GO
-CREATE SCHEMA Higiliquidos;
-GO
+--CREATE SCHEMA Higiliquidos;
+--GO
 
 
 CREATE TABLE Higiliquidos.Empresa (
@@ -46,11 +46,11 @@ GO
 
 CREATE TABLE Higiliquidos.Carrinha (
   Matricula varchar(8) NOT NULL,
-  Ano INT NOT NULL,
-  Marca varchar(32) NOT NULL,
-  Combustivel varchar(32) NOT NULL,
-  Peso INT NOT NULL,
-  NIF_Empresa INT NOT NULL,
+  Ano INT,
+  Marca varchar(32),
+  Combustivel varchar(32),
+  Peso INT,
+  NIF_Empresa INT,
 
   PRIMARY KEY (Matricula),
   FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)
@@ -59,9 +59,9 @@ GO
 
 CREATE TABLE Higiliquidos.Armazem (
   ID INT NOT NULL,
-  Area INT NOT NULL,
+  Area INT,
   Endereco varchar(64) NOT NULL,
-  NIF_Empresa INT NOT NULL,
+  NIF_Empresa INT,
   
   PRIMARY KEY (ID),
   FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)  
@@ -71,11 +71,11 @@ GO
 CREATE TABLE Higiliquidos.Pessoa (  
   NIF INT NOT NULL,
   Nome varchar(256) NOT NULL,
-  Data_de_Nascimento DATE NOT NULL,
+  Data_de_Nascimento DATE,
   Email varchar(64) NOT NULL,
-  Morada varchar(64) NOT NULL,
+  Morada varchar(64),
   ContactoTelefonico INT NOT NULL,
-  NIF_Empresa INT NOT NULL,
+  NIF_Empresa INT,
   
   PRIMARY KEY (NIF),
   FOREIGN KEY (NIF_Empresa) REFERENCES Higiliquidos.Empresa(NIF_Empresa)
@@ -85,7 +85,7 @@ GO
 CREATE TABLE Higiliquidos.Produto (
   ID INT NOT NULL,
   Nome VARCHAR(64) NOT NULL,
-  Marca VARCHAR(64) NOT NULL,
+  Marca VARCHAR(64),
   Tipo_de_Produto VARCHAR(64),
   IVA DECIMAL(5, 2) NOT NULL,
   Preco DECIMAL(10, 2) NOT NULL,
