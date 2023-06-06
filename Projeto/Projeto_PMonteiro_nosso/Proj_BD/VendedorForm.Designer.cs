@@ -29,12 +29,49 @@ namespace Proj_BD
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gobackBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(57, 26);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(1084, 352);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // gobackBtn
+            // 
+            this.gobackBtn.Location = new System.Drawing.Point(57, 405);
+            this.gobackBtn.Name = "gobackBtn";
+            this.gobackBtn.Size = new System.Drawing.Size(123, 33);
+            this.gobackBtn.TabIndex = 4;
+            this.gobackBtn.Text = "Go back";
+            this.gobackBtn.UseVisualStyleBackColor = true;
+            this.gobackBtn.Click += new System.EventHandler(this.gobackBtn_Click);
+            // 
+            // VendedorForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1213, 450);
+            this.Controls.Add(this.gobackBtn);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "VendedorForm";
             this.Text = "VendedorForm";
+            this.Load += new System.EventHandler(this.VendedorForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button gobackBtn;
     }
 }

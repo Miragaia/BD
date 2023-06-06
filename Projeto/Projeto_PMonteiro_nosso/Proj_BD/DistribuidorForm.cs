@@ -33,5 +33,41 @@ namespace Proj_BD
             this.Hide(); // mudar de screen
             mainForm.Show();
         }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            nomeTxt.Clear();
+            nifTxt.Clear();
+            emailTxt.Clear();
+            num_funcTxt.Clear();
+            Id_vendaTxt.Clear();
+            matriculaTxt.Clear();
+            num_dist.Clear();
+
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>()
+            {
+                { "@nif", nifTxt.Text },
+                { "@nome", nomeTxt.Text },
+                { "@email", emailTxt.Text },
+                { "@num_func", num_funcTxt.Text },
+                { "@id_venda", Id_vendaTxt.Text },
+                { "@matricula", matriculaTxt.Text },
+                { "@num_dist", num_dist.Text },
+
+            };
+
+            List<string> parametersKeys = new List<string>(parameters.Keys);
+            foreach (var key in parametersKeys) // replace empty inputs with null (required for the db stored procedure)
+            {
+                if (parameters[key] == "")
+                    parameters[key] = null;
+            }
+
+            MainForm.PopulateTableWithParameters(dataGridView1, "filterDistribuidores", parameters);
+        }
     }
 }

@@ -483,3 +483,66 @@ AS
 			END
 	END
 GO
+
+
+
+DROP PROCEDURE getDistribuidores
+GO
+CREATE PROCEDURE getDistribuidores
+AS
+	BEGIN
+		SET NOCOUNT ON;
+		SELECT DISTINCT * FROM view_distribuidores
+	END
+GO
+
+DROP PROCEDURE filterDistribuidores
+GO
+CREATE PROCEDURE filterDistribuidores
+(
+    @nif INT = NULL,
+    @nome VARCHAR(256) = NULL,
+	@email VARCHAR(64) = NULL,
+	@num_func INT = NULL,
+	@id_venda INT = NULL,
+    @matricula VARCHAR(8) = NULL,
+	@num_dist INT = NULL
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    SELECT DISTINCT * 
+    FROM view_distribuidores
+    WHERE (@nif IS NULL OR NIF = @nif)
+        AND (@nome IS NULL OR Nome LIKE ISNULL(@nome, '') + '%')
+		AND (@email IS NULL OR Email LIKE ISNULL(@email, '') + '%')
+		AND (@num_func IS NULL OR Num_Func = @num_func)
+		AND (@id_venda IS NULL OR ID_Venda = @id_venda)
+		AND (@matricula IS NULL OR Matricula_Carrinha LIKE ISNULL(@matricula, '') + '%')
+		AND (@num_dist IS NULL OR Num_Distribuidor = @num_dist)
+		
+
+END
+GO
+
+
+
+DROP PROCEDURE getVendedores
+GO
+CREATE PROCEDURE getVendedores
+AS
+	BEGIN
+		SET NOCOUNT ON;
+		SELECT DISTINCT * FROM view_vendedores
+	END
+GO
+
+DROP PROCEDURE getGerente
+GO
+CREATE PROCEDURE getGerente
+AS
+	BEGIN
+		SET NOCOUNT ON;
+		SELECT DISTINCT * FROM view_gerente
+	END
+GO

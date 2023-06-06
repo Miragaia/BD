@@ -64,6 +64,13 @@ namespace Proj_BD
         {
             changeTab(3);
         }
+
+        private void gobackBtn_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            this.Hide(); // mudar de screen
+            mainForm.Show();
+        }
     }
 
 

@@ -19,18 +19,43 @@ GO
 DROP VIEW view_distribuidores
 GO
 CREATE VIEW view_distribuidores AS
-SELECT Pessoa.NIF, Nome, Num_Cliente, Data_de_Nascimento, Email, Morada,
-ContactoTelefonico
-FROM Higiliquidos.Distribuidor d JOIN Higiliquidos.Funcionarios f on d.Num_Distribuidor = f.Num_;
-FROM Higiliquidos.Pessoa p JOIN Higiliquidos.Funcionarios f on p.NIF = f.NIF_Funcionario;
+SELECT d.Num_Distribuidor,p.Nome, p.NIF, p.Email, cd.Matricula as Matricula_Carrinha, f.Num_Func, e.ID_Venda
+FROM Higiliquidos.Distribuidor d 
+	JOIN Higiliquidos.Funcionario f on d.Num_Func = f.Num_Func
+	JOIN Higiliquidos.Pessoa p on p.NIF = f.NIF_Funcionario
+	JOIN Higiliquidos.Carrinha_Distribuidor cd on cd.Num_Distribuidor = d.Num_Distribuidor
+	JOIN Higiliquidos.Entrega e on e.Num_Distribuidor = d.Num_Distribuidor;
+
+
+GO
+
+
+DROP VIEW view_vendedores
+GO
+CREATE VIEW view_vendedores AS
+SELECT v.Num_Vendedor,p.Nome, p.NIF, p.Email, f.Num_Func, ve.ID as ID_Venda
+FROM Higiliquidos.Vendedor v 
+	JOIN Higiliquidos.Funcionario f on v.Num_Func = f.Num_Func
+	JOIN Higiliquidos.Pessoa p on p.NIF = f.NIF_Funcionario
+	JOIN Higiliquidos.Venda ve on ve.Num_Vendedor = v.Num_Vendedor
+
+
+
 GO
 
 
 
+DROP VIEW view_gerente
+GO
+CREATE VIEW view_gerente AS
+SELECT g.Num_Gerente,p.Nome, p.NIF, p.Email, f.Num_Func
+FROM Higiliquidos.Gerente g
+	JOIN Higiliquidos.Funcionario f on g.Num_Func = f.Num_Func
+	JOIN Higiliquidos.Pessoa p on p.NIF = f.NIF_Funcionario
 
 
 
-
+GO
 
 
 

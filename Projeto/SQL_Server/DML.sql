@@ -9,8 +9,7 @@ INSERT INTO Higiliquidos.Carrinha (Matricula, Ano, Marca, Combustivel, Peso, NIF
 ('GH-56-LM', 2016, 'Ford',     'Diesel',   2000, 203551783),
 ('IJ-78-NP', 2017, 'Toyota',   'Gasolina', 2500, 203551783),
 ('KL-90-QR', 2020, 'Dacia',    'Gasolina', 3000, 203551783),
-('OP-45-UV', 2018, 'Peugeot',  'Gasolina', 1800, 203551783),
-('QR-67-WX', 2016, 'Citroen',  'Diesel',   1900, 203551783);
+('OP-45-UV', 2018, 'Peugeot',  'Gasolina', 1800, 203551783);
 
 
 INSERT INTO Higiliquidos.Armazem(ID, Area, Endereco, NIF_Empresa) VALUES
@@ -193,8 +192,7 @@ INSERT INTO Higiliquidos.Carrinha_Distribuidor (Matricula, Num_Distribuidor, Dat
 ('GH-56-LM', 4, '2018/03/15', NULL),
 ('IJ-78-NP', 5, '2018/04/04', NULL),
 ('KL-90-QR', 6, '2018/04/04', NULL),
-('OP-45-UV', 7, '2018/04/04', NULL),
-('QR-67-WX', 1, '2019/07/21', NULL);
+('OP-45-UV', 7, '2018/04/04', NULL);
 
 
 INSERT INTO Higiliquidos.Compra (ID, Data_Compra, Quantidade, ID_Produto, ID_Armazem, Num_Fornecedor) VALUES

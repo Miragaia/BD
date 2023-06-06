@@ -16,5 +16,17 @@ namespace Proj_BD
         {
             InitializeComponent();
         }
+
+        private void GerenteForm_Load(object sender, EventArgs e)
+        {
+            MainForm.populateList(dataGridView1, "getGerente");
+        }
+
+        private void gobackBtn_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            this.Hide(); // mudar de screen
+            mainForm.Show();
+        }
     }
 }
