@@ -56,6 +56,28 @@ GO
 
 
 
+DROP FUNCTION Higiliquidos.getnumFornecedorBYname
+GO
+CREATE FUNCTION Higiliquidos.getnumFornecedorBYname (@nomeFornecedor varchar(256))
+RETURNS INT
+AS
+BEGIN
+  DECLARE @numFornecedor INT;
+  
+  SELECT @numFornecedor = Num_Fornecedor
+  FROM Higiliquidos.Fornecedor f
+  INNER JOIN Higiliquidos.Pessoa p ON f.NIF_Fornecedor = p.NIF
+  WHERE p.Nome = @nomeFornecedor;
+  
+  IF @numFornecedor IS NULL
+    SET @numFornecedor = 0;
+  
+  RETURN @numFornecedor;
+END;
+GO
+
+
+
 
 DROP FUNCTION Higiliquidos.getnumVendedorBYname
 GO
@@ -77,6 +99,8 @@ BEGIN
   RETURN @numVendedor;
 END;
 GO
+
+
 
 DROP FUNCTION Higiliquidos.getnumClienteByNif
 GO
@@ -113,3 +137,37 @@ BEGIN
 
     RETURN @count;
 END;
+GO
+
+
+DROP FUNCTION Higiliquidos.GetArmazemID
+GO
+CREATE FUNCTION Higiliquidos.GetArmazemID(@ProdutoID INT)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @ArmazemID INT;
+
+    SELECT @ArmazemID = ID_Armazem
+    FROM Higiliquidos.Venda
+    WHERE ID_Produto = @ProdutoID;
+
+    RETURN @ArmazemID;
+END;
+GO
+
+DROP FUNCTION Higiliquidos.VerificarIDCompraExistente
+GO
+CREATE FUNCTION Higiliquidos.VerificarIDCompraExistente (@id_compra INT)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @count INT;
+
+    SELECT @count = COUNT(*)
+    FROM Higiliquidos.Compra
+    WHERE ID = @id_compra;
+
+    RETURN @count;
+END;
+GO

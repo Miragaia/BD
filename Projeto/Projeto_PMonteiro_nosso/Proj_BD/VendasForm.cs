@@ -66,10 +66,9 @@ namespace Proj_BD
             ID_ProdTxt.Clear();
             Nome_ProdTxt.Clear();
             Type_ProdTxt.Clear();
-            ID_ArmTxt.Clear();
             nome_distTxt.Clear();
             nome_VendTxt.Clear();
-            nome_CTxt.Clear();
+            nif_CTxt.Clear();
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -81,10 +80,9 @@ namespace Proj_BD
                 { "@id_produto", ID_ProdTxt.Text },
                 { "@nome_produto", Nome_ProdTxt.Text },
                 { "@type_prod", Type_ProdTxt.Text },
-                { "@id_armazem", ID_ArmTxt.Text },
                 { "@nome_dis", nome_distTxt.Text },
                 { "@nome_vend", nome_VendTxt.Text},
-                { "@nome_client", nome_CTxt.Text},
+                { "@nif_client", nif_CTxt.Text},
             };
 
             List<string> parametersKeys = new List<string>(parameters.Keys);
@@ -106,7 +104,6 @@ namespace Proj_BD
                 { "@Quantidade", quantTXT.Text },
                 { "@data_venda", data_vendaTXT.Text },
                 { "@nome_vendedor", nomeVendTXT.Text },
-                { "@id_arm", IDArmTXT.Text },
                 { "@nif_cliente", NIFClientTXT.Text },
                 { "@nome_dist", NumDistTXT.Text},
             };
@@ -132,6 +129,17 @@ namespace Proj_BD
                 MainForm.InsertOrRemoveIntoDB("addVenda", parameters);
                 searchBtn.PerformClick(); // Populate/Update List after adding new employee
             }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            idVendaTXT.Clear();
+            IDProdTXT.Clear();
+            quantTXT.Clear();
+            data_vendaTXT.Clear();
+            nomeVendTXT.Clear();
+            NumDistTXT.Clear();
+            NIFClientTXT.Clear();
         }
     }
 }

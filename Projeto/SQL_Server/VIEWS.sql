@@ -14,6 +14,31 @@ ContactoTelefonico
 FROM Higiliquidos.Pessoa JOIN Higiliquidos.Fornecedor on Pessoa.NIF = Fornecedor.NIF_Fornecedor;
 GO
 
+
+
+DROP VIEW view_distribuidores
+GO
+CREATE VIEW view_distribuidores AS
+SELECT Pessoa.NIF, Nome, Num_Cliente, Data_de_Nascimento, Email, Morada,
+ContactoTelefonico
+FROM Higiliquidos.Distribuidor d JOIN Higiliquidos.Funcionarios f on d.Num_Distribuidor = f.Num_;
+FROM Higiliquidos.Pessoa p JOIN Higiliquidos.Funcionarios f on p.NIF = f.NIF_Funcionario;
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 DROP VIEW view_vendas
 GO
 
@@ -69,3 +94,30 @@ FROM
     JOIN Higiliquidos.Armazem a ON v.ID_Armazem = a.ID
 GO
 
+
+
+DROP VIEW view_compras
+GO
+
+CREATE VIEW view_compras AS
+SELECT DISTINCT
+	c.Data_Compra,
+    c.ID AS ID_Compra,
+    c.ID_Produto,
+    p.Nome AS Nome_Produto,
+    p.Tipo_de_Produto,
+    p.Preco,
+    p.IVA,
+    c.Quantidade,
+    c.ID_Armazem,
+	pe.nome AS Nome_fornecedor
+
+	
+FROM
+    Higiliquidos.Compra c
+    JOIN Higiliquidos.Produto p ON c.ID_Produto = p.ID
+    JOIN Higiliquidos.Armazem a ON c.ID_Armazem = a.ID
+	JOIN Higiliquidos.Fornecedor f ON c.Num_Fornecedor = f.Num_Fornecedor
+    JOIN Higiliquidos.Pessoa pe ON f.NIF_Fornecedor = pe.NIF
+
+GO

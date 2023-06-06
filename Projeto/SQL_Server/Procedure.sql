@@ -142,7 +142,7 @@ CREATE PROCEDURE addFornecedor
     @nif INT = NULL,
     @nome VARCHAR(256) = NULL,
 	@num_fornecedor INT = NULL,
-	@dataNasc Date = NULL,
+	@dataNasc DATE = NULL,
 	@email VARCHAR(64) = NULL,
     @morada VARCHAR(64) = NULL,
 	@telemovel INT = NULL
@@ -292,10 +292,9 @@ CREATE PROCEDURE filterVendas
 	@id_produto INT = NULL,
 	@nome_produto VARCHAR(64) = NULL,
 	@type_prod VARCHAR(64) = NULL,
-	@id_armazem INT = NULL,
 	@nome_dis VARCHAR(256) = NULL,
 	@nome_vend VARCHAR(256) = NULL,
-	@nome_client VARCHAR(256) = NULL
+	@nif_client VARCHAR(256) = NULL
 )
 AS
 BEGIN
@@ -307,10 +306,9 @@ BEGIN
 		AND (@id_produto IS NULL OR ID_Produto = @id_produto)
         AND (@nome_produto IS NULL OR Nome_Produto LIKE ISNULL(@nome_produto, '') + '%')
 		AND (@type_prod IS NULL OR Tipo_de_Produto LIKE ISNULL(@type_prod, '') + '%')
-		AND (@id_armazem IS NULL OR ID_Armazem = @id_armazem)
 		AND (@nome_dis IS NULL OR Nome_Distribuidor LIKE ISNULL(@nome_dis, '') + '%')
 		AND (@nome_vend IS NULL OR Nome_Vendedor LIKE ISNULL(@nome_vend, '') + '%')
-		AND (@nome_client IS NULL OR Nome_Cliente LIKE ISNULL(@nome_client, '') + '%')
+		AND (@nif_client IS NULL OR NIF_Cliente LIKE ISNULL(@nif_client, '') + '%')
 END
 GO
 
@@ -325,15 +323,14 @@ CREATE PROCEDURE addVenda
 	@Quantidade INT = NULL,
 	@data_venda DATE = NULL,
 	@nome_vendedor VARCHAR(256) = NULL,
-	@id_arm INT = NULL,
 	@nif_cliente  INT = NULL,
 	@nome_dist VARCHAR(256) = NULL
 )
 AS
 	BEGIN
+		DECLARE @id_arm INT;
 		DECLARE @countVenda INT;
 		DECLARE @counterProd INT;
-		DECLARE @counterArm INT;
 		DECLARE @num_dist INT;
 		DECLARE @num_vendedor INT;
 		DECLARE @num_cliente INT;
@@ -343,16 +340,14 @@ AS
 		DECLARE @IDProduto VARCHAR(5);
 		SET @countVenda = Higiliquidos.VerificarIDVendaExistente(@id_venda)
 		SET @counterProd = Higiliquidos.checkifProdutoIDExists(@id_prod);
-		SET @counterArm = Higiliquidos.checkifArmazemIDExists(@id_arm);
 		SET @num_dist = Higiliquidos.getnumDistBYname(@nome_dist);
 		SET @num_vendedor = Higiliquidos.getnumVendedorBYname(@nome_vendedor);
 		SET @num_cliente = Higiliquidos.getnumClienteByNif(@nif_cliente);
+		SET @id_arm = Higiliquidos.GetArmazemID(@id_prod);
 		;
 
 		IF (@counterProd = 0)
-			RAISERROR('O produto com o ID %d não existe.', 16, 1, @id_prod);
-		ELSE IF (@counterArm < 1)
-			RAISERROR('O armazém com o ID %d não existe.', 16, 1, @id_arm);
+			RAISERROR('O produto com o ID %d não existe.', 16, 1, @id_prod);			
 		ELSE IF (@num_dist < 1)
 			 RAISERROR('O distribuidor com o nome %s não existe.', 16, 1, @nome_dist);
 		ELSE IF (@num_vendedor < 1)
@@ -375,6 +370,106 @@ AS
 									INSERT INTO Higiliquidos.Venda(ID, Quantidade, ID_Produto, ID_Armazem, Num_Vendedor, Num_Distribuidor, Num_Cliente)
 									VALUES (@id_venda, @Quantidade, @id_prod, @id_arm, @num_vendedor, @num_dist, @num_cliente)
 									INSERT INTO Higiliquidos.Entrega (Data_Entrega, ID_Venda, Num_Distribuidor) VALUES (@data_venda, @id_venda, @num_dist)
+								END
+							ELSE
+								BEGIN
+									RAISERROR ('Produto nao disponivel', 16,1);
+								END
+							FETCH productCursor INTO @IDProduto , @quantity
+						END
+				CLOSE productCursor;
+				DEALLOCATE productCursor;
+				RETURN ;
+			END
+	END
+GO
+
+
+
+DROP PROCEDURE getCompras
+GO
+CREATE PROCEDURE getCompras
+AS
+	BEGIN
+		SET NOCOUNT ON;
+		SELECT * FROM view_compras
+	END
+GO
+
+
+
+DROP PROCEDURE filterCompras
+GO
+CREATE PROCEDURE filterCompras
+(
+    @data_comp DATE = NULL,
+	@id_compra INT = NULL,
+	@id_produto INT = NULL,
+	@nome_produto VARCHAR(64) = NULL,
+	@type_prod VARCHAR(64) = NULL,
+	@nome_forn VARCHAR(256) = NULL
+
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    SELECT DISTINCT * 
+    FROM view_compras
+    WHERE (@data_comp IS NULL OR Data_Compra >= @data_comp)
+		AND (@id_compra IS NULL OR ID_Compra = @id_compra)
+		AND (@id_produto IS NULL OR ID_Produto = @id_produto)
+        AND (@nome_produto IS NULL OR Nome_Produto LIKE ISNULL(@nome_produto, '') + '%')
+		AND (@type_prod IS NULL OR Tipo_de_Produto LIKE ISNULL(@type_prod, '') + '%')
+		AND (@nome_forn IS NULL OR Nome_fornecedor LIKE ISNULL(@nome_forn, '') + '%')
+END
+GO
+
+
+DROP PROCEDURE addCompra
+GO
+CREATE PROCEDURE addCompra
+(
+	@data_comp DATE = NULL,
+	@id_compra INT = NULL,
+	@id_produto INT = NULL,
+	@Quantidade INT = NULL,
+	@nome_forn VARCHAR(256) = NULL
+)
+AS
+	BEGIN
+		DECLARE @id_arm INT;
+		DECLARE @countCompra INT;
+		DECLARE @counterProd INT;
+		DECLARE @num_forn INT;
+		
+		DECLARE @erro VARCHAR(100);
+		DECLARE @quantity INT;
+		DECLARE @IDProduto VARCHAR(5);
+		SET @countCompra = Higiliquidos.VerificarIDCompraExistente(@id_compra)
+		SET @counterProd = Higiliquidos.checkifProdutoIDExists(@id_produto);
+		SET @num_forn = Higiliquidos.getnumFornecedorBYname(@nome_forn);
+		SET @id_arm = Higiliquidos.GetArmazemID(@id_produto);
+		;
+
+		IF (@counterProd = 0)
+			RAISERROR('O produto com o ID %d não existe.', 16, 1, @id_produto);			
+		ELSE IF (@num_forn < 1)
+			 RAISERROR('O fornecedor com o nome %s não existe.', 16, 1, @nome_forn);
+		ELSE IF (@countCompra >= 1)
+			RAISERROR('O ID de venda %d já existe.', 16, 1, @id_compra);
+		ELSE 
+			BEGIN
+				DECLARE	productCursor CURSOR FAST_FORWARD
+					FOR SELECT ID , Quantidade FROM Higiliquidos.Produto WHERE ID = @id_produto;
+				OPEN productCursor;
+				FETCH productCursor INTO @IDProduto , @quantity;
+					WHILE @@FETCH_STATUS = 0
+						BEGIN
+							IF @quantity >= @Quantidade
+								BEGIN
+									UPDATE Higiliquidos.Produto SET Quantidade = Quantidade + @Quantidade WHERE	ID = @id_produto
+									INSERT INTO Higiliquidos.Compra(ID, Data_Compra, Quantidade, ID_Produto, ID_Armazem, Num_Fornecedor)
+									VALUES (@id_compra, @data_comp, @Quantidade, @id_produto, @id_arm, @num_forn)
 								END
 							ELSE
 								BEGIN

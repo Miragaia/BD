@@ -168,7 +168,7 @@ GO
 
 CREATE TABLE Higiliquidos.Compra (
   ID INT NOT NULL,
-  Data_Compra Date,
+  Data_Compra Date NOT NULL,
   Quantidade INT NOT NULL,
   ID_Produto INT NOT NULL,
   ID_Armazem INT NOT NULL,
@@ -200,7 +200,7 @@ CREATE TABLE Higiliquidos.Venda (
 GO
 
 CREATE TABLE Higiliquidos.Entrega (
-  Data_Entrega DATE NOT NULL,
+  Data_Entrega DATE,
   ID_Venda INT NOT NULL,
   Num_Distribuidor INT NOT NULL,
 
@@ -209,3 +209,4 @@ CREATE TABLE Higiliquidos.Entrega (
   FOREIGN KEY (Num_Distribuidor) REFERENCES Higiliquidos.Distribuidor(Num_Distribuidor)
   );
   GO
+

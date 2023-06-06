@@ -162,3 +162,6 @@ C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\
 C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\Proj_BD\obj\Debug\net5.0-windows\Proj_BD.ClientesForm.resources
 C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\Proj_BD\obj\Debug\net5.0-windows\Proj_BD.FornecedoresForm.resources
 C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\Proj_BD\obj\Debug\net5.0-windows\Proj_BD.FuncionariosForm.resources
+C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\Proj_BD\obj\Debug\net5.0-windows\Proj_BD.DistribuidorForm.resources
+C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\Proj_BD\obj\Debug\net5.0-windows\Proj_BD.GerenteForm.resources
+C:\Users\gonca\Disciplinas\ano2\BD\BD_github\BD\Projeto\Projeto_PMonteiro_nosso\Proj_BD\obj\Debug\net5.0-windows\Proj_BD.VendedorForm.resources
